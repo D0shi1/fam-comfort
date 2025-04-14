@@ -4,14 +4,88 @@
     "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj": {}
   },
   "projects": {
-    "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj": {
+    "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
-        "projectName": "fam-comfort.Infrastructure",
-        "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
+        "projectUniqueName": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj",
+        "projectName": "fam-comfort.Application",
+        "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj",
         "packagesPath": "/Users/daniilkopot/.nuget/packages/",
-        "outputPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/obj/",
+        "outputPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/daniilkopot/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/9.0.3/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj": {
+                "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.14, 8.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.14, 8.0.14]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.3/libexec/sdk/9.0.104/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj",
+        "projectName": "fam-comfort.Core",
+        "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj",
+        "packagesPath": "/Users/daniilkopot/.nuget/packages/",
+        "outputPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/daniilkopot/.nuget/NuGet/NuGet.Config"
@@ -44,6 +118,90 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.14, 8.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.14, 8.0.14]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.3/libexec/sdk/9.0.104/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
+        "projectName": "fam-comfort.Infrastructure",
+        "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
+        "packagesPath": "/Users/daniilkopot/.nuget/packages/",
+        "outputPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/daniilkopot/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/opt/homebrew/Cellar/dotnet/9.0.3/libexec/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj": {
+                "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

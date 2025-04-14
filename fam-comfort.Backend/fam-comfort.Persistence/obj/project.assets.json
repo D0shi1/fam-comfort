@@ -1506,6 +1506,9 @@
       "fam-comfort.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "fam-comfort.Core": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/fam-comfort.Application.dll": {}
         },

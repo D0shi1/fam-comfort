@@ -26,7 +26,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj": {
+                "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
