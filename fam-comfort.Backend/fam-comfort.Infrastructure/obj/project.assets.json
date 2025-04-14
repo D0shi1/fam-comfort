@@ -8,25 +8,25 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/Users/daniilkopot/.nuget/packages/": {}
+    "/Users/phantom/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
+      "projectUniqueName": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
       "projectName": "fam-comfort.Infrastructure",
-      "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
-      "packagesPath": "/Users/daniilkopot/.nuget/packages/",
-      "outputPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/obj/",
+      "projectPath": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
+      "packagesPath": "/Users/phantom/.nuget/packages/",
+      "outputPath": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/daniilkopot/.nuget/NuGet/NuGet.Config"
+        "/Users/phantom/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "/opt/homebrew/Cellar/dotnet/9.0.3/libexec/library-packs": {},
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -44,8 +44,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -61,22 +60,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.14, 8.0.14]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.14, 8.0.14]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.3/libexec/sdk/9.0.104/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

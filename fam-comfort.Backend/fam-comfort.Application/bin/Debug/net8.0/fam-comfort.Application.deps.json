@@ -7,14 +7,30 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "fam-comfort.Application/1.0.0": {
+        "dependencies": {
+          "fam-comfort.Core": "1.0.0"
+        },
         "runtime": {
           "fam-comfort.Application.dll": {}
+        }
+      },
+      "fam-comfort.Core/1.0.0": {
+        "runtime": {
+          "fam-comfort.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "fam-comfort.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "fam-comfort.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

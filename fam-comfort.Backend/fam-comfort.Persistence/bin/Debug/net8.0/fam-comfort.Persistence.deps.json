@@ -12,7 +12,8 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.3",
-          "fam-comfort.Application": "1.0.0"
+          "fam-comfort.Application": "1.0.0",
+          "fam-comfort.Core": "1.0.0"
         },
         "runtime": {
           "fam-comfort.Persistence.dll": {}
@@ -923,8 +924,19 @@
         }
       },
       "fam-comfort.Application/1.0.0": {
+        "dependencies": {
+          "fam-comfort.Core": "1.0.0"
+        },
         "runtime": {
           "fam-comfort.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "fam-comfort.Core/1.0.0": {
+        "runtime": {
+          "fam-comfort.Core.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1471,6 +1483,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "fam-comfort.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "fam-comfort.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
