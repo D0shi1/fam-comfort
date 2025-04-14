@@ -2,7 +2,7 @@ namespace fam_comfort.Core.Models;
 
 public class Facade
 {
-    private Facade(Guid id, string name, string shortName, uint length, uint width, uint height, string description,
+    private Facade(Guid id, string name, string shortName, ushort length, ushort width, ushort height, string description,
         List<Color> colors, string materials, string pathToImage, string pathToImageSchema)
     {
         Id = id;
@@ -28,11 +28,11 @@ public class Facade
     
     public string ShortName { get; set; } = string.Empty;
     
-    public uint Length { get; set; }
+    public ushort Length { get; set; }
     
-    public uint Width { get; set; }
+    public ushort Width { get; set; }
     
-    public uint Height { get; set; }
+    public ushort Height { get; set; }
     
     public string Description { get; set; } = string.Empty;
 
@@ -48,7 +48,7 @@ public class Facade
     
     public FacadeCategory FacadeCategory { get; set; }
 
-    public static Facade? Create(Guid id, string name, string shortName, uint length, uint width, uint height,
+    public static Facade? Create(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
         string description, List<Color> colors, string materials, string pathToImage, string pathToImageSchema)
     {
         return new Facade(id, name, shortName, length, width, height, description, colors, materials, pathToImage,

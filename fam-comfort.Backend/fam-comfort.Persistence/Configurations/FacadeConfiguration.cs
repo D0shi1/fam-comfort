@@ -24,15 +24,15 @@ public class FacadeConfiguration : IEntityTypeConfiguration<Facade>
             .IsRequired();
         
         builder.Property(x => x.Length)
-            .HasColumnType("uint")
+            .HasColumnType("int")
             .IsRequired();
         
         builder.Property(x => x.Width)
-            .HasColumnType("uint")
+            .HasColumnType("int")
             .IsRequired();
         
         builder.Property(x => x.Height)
-            .HasColumnType("uint")
+            .HasColumnType("int")
             .IsRequired();
         
         builder.Property(x => x.Description)
