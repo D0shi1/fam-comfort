@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\fam-comfort.Application\fam-comfort.Application.csproj" />
+      <ProjectReference Include="..\fam-comfort.Core\fam-comfort.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>

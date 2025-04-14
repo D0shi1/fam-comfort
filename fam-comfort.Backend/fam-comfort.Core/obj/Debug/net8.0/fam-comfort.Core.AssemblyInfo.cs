@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("fam-comfort.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+250532779120aa4ea74bd002fe9b6b0dc4779605")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be7a26789a544454926cdfd54a467208732accab")]
 [assembly: System.Reflection.AssemblyProductAttribute("fam-comfort.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("fam-comfort.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
