@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "le8rF15NwGI=",
+  "dgSpecHash": "KM1xOhVhB8M=",
   "success": true,
-  "projectFilePath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj",
-  "expectedPackageFiles": [
-    "/Users/daniilkopot/.nuget/packages/microsoft.netcore.app.ref/8.0.14/microsoft.netcore.app.ref.8.0.14.nupkg.sha512",
-    "/Users/daniilkopot/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.14/microsoft.aspnetcore.app.ref.8.0.14.nupkg.sha512"
-  ],
+  "projectFilePath": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Core/fam-comfort.Core.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "uGDfrTgnrZi/fcaJHd6WeZrIHeJ+xpPlTubRLufDxgA=",
+  "Source": "fam-comfort.WebApi",
+  "BasePath": "_content/fam-comfort.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

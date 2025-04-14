@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/fam-comfort.WebApi.props" />
+</Project>
