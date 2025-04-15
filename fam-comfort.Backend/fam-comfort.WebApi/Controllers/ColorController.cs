@@ -21,7 +21,7 @@ public class ColorController : ControllerBase
     {
         var colors = await _colorService.GetAllAsync(id);
         if (colors is null) return NotFound();
-        
+        Console.Write("123");
         return Ok(colors);
     }
     
