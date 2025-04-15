@@ -1,10 +1,12 @@
 using fam_comfort.Application.Interfaces.Authentication;
 using fam_comfort.Application.Interfaces.Repositories;
 using fam_comfort.Application.Services;
+using fam_comfort.Application.Validators;
 using fam_comfort.Core.Models;
 using fam_comfort.Infrastructure;
 using fam_comfort.Persistence;
 using fam_comfort.Persistence.Repositories;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +19,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers().AddNewtonsoftJson(x =>
 {
     x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+}).AddFluentValidation(fv =>
+{
+    fv.RegisterValidatorsFromAssembly(typeof(FacadeRequestValidator).Assembly);
+    fv.DisableDataAnnotationsValidation = true;
 });
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 builder.Services.AddScoped<IFacadeRepository, FacadeRepository>();
