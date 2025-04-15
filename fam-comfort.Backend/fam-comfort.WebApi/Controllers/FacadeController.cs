@@ -1,6 +1,7 @@
 using fam_comfort.Application.Services;
 using fam_comfort.Application.ViewModels;
 using fam_comfort.WebApi.Mapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fam_comfort.WebApi.Controllers;
@@ -55,6 +56,7 @@ public class FacadeController : ControllerBase
         return Ok(facadeCategory.ToDto());
     }
 
+    [Authorize]
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] FacadeRequest request)
     {
@@ -67,6 +69,7 @@ public class FacadeController : ControllerBase
         return Created();
     }
 
+    [Authorize]
     [HttpPut("update/{id:guid}")]
     public async Task<IActionResult> Update([FromBody] FacadeRequest request, Guid id)
     {
@@ -77,6 +80,7 @@ public class FacadeController : ControllerBase
         return Ok();
     }
 
+    [Authorize]
     [HttpDelete("delete/{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {

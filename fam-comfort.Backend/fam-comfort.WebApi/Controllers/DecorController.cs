@@ -1,6 +1,7 @@
 using fam_comfort.Application.Services;
 using fam_comfort.Application.ViewModels;
 using fam_comfort.WebApi.Mapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fam_comfort.WebApi.Controllers;
@@ -45,6 +46,7 @@ public class DecorController : ControllerBase
         return Ok(decorCategory.ToDto());
     }
 
+    [Authorize]
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] DecorRequest request)
     {
@@ -57,6 +59,7 @@ public class DecorController : ControllerBase
         return Created();
     }
 
+    [Authorize]
     [HttpPut("update/{id:guid}")]
     public async Task<IActionResult> Update([FromBody] DecorRequest request, Guid id)
     {
@@ -67,6 +70,7 @@ public class DecorController : ControllerBase
         return Ok();
     }
 
+    [Authorize]
     [HttpDelete("delete/{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {

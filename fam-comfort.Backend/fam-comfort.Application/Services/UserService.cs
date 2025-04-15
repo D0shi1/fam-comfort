@@ -8,6 +8,11 @@ public class UserService(IPasswordHasher passwordHasher, IUserRepository userRep
 {
     public async Task<User> Register(string username, string password)
     {
+        if (await userRepository.GetByUsernameAsync(username) is not null)
+        {
+            throw new Exception("Username already exists");
+        }
+        
         var hashedPassword = passwordHasher.Generate(password);
         
         var user = User.Create(Guid.NewGuid(), username, hashedPassword);
@@ -20,6 +25,11 @@ public class UserService(IPasswordHasher passwordHasher, IUserRepository userRep
     public async Task<string> Login(string username, string password)
     {
         var user = await userRepository.GetByUsernameAsync(username);
+
+        if (user == null)
+        {
+            throw new UnauthorizedAccessException("Invalid username or password");
+        }
         
         var result = passwordHasher.Verify(password, user.PasswordHash);
 
