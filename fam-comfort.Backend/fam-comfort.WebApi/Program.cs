@@ -17,8 +17,10 @@ builder.Services.AddControllers().AddNewtonsoftJson(x =>
 });
 builder.Services.AddScoped<IFacadeRepository, FacadeRepository>();
 builder.Services.AddScoped<IFacadeCategoryRepository, FacadeCategoryRepository>();
+builder.Services.AddScoped<IColorRepository, ColorRepository>();
 builder.Services.AddScoped<FacadeService>();
 builder.Services.AddScoped<FacadeCategoryService>();
+builder.Services.AddScoped<ColorService>();
 
 builder.Services.AddDbContext<FamComfortDbContext>(options =>
 {

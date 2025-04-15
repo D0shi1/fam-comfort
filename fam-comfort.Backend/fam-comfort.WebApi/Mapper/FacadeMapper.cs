@@ -10,7 +10,7 @@ public static class FacadeMapper
         return new FacadeDto
         {
             Id = facade.Id,
-            Colors = facade.Colors,
+            Colors = facade.Colors.Select(c => c.ToDto()).ToList(),
             Description = facade.Description,
             Height = facade.Height,
             Width = facade.Width,
@@ -18,7 +18,6 @@ public static class FacadeMapper
             Materials = facade.Materials,
             Name = facade.Name,
             ShortName = facade.ShortName,
-            PathToImage = facade.PathToImage,
             PathToImageSchema = facade.PathToImageSchema,
         };
     }

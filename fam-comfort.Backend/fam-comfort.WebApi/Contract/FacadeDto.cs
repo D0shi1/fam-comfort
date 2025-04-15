@@ -18,11 +18,8 @@ public class FacadeDto
     
     public string Description { get; set; } = string.Empty;
 
-    public List<Color> Colors { get; set; } = [];
+    public List<ColorDto> Colors { get; set; } = [];
     
     public string Materials { get; set; } = string.Empty;
-
-    public string PathToImage { get; set; } = string.Empty;
-    
     public string PathToImageSchema { get; set; } = string.Empty;
 }

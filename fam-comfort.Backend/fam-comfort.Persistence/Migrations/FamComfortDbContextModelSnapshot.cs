@@ -22,38 +22,98 @@ namespace fam_comfort.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ColorFacade", b =>
-                {
-                    b.Property<Guid>("ColorsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("FacadesId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ColorsId", "FacadesId");
-
-                    b.HasIndex("FacadesId");
-
-                    b.ToTable("ColorFacade");
-                });
-
             modelBuilder.Entity("fam_comfort.Core.Models.Color", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("HexColor")
-                        .IsRequired()
-                        .HasColumnType("varchar(8)");
+                    b.Property<Guid>("FacadeId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(256)");
 
+                    b.Property<string>("PathToImage")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(2048)")
+                        .HasDefaultValue("images/template_image_facade.png");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("FacadeId");
+
                     b.ToTable("Colors", (string)null);
+                });
+
+            modelBuilder.Entity("fam_comfort.Core.Models.Decor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DecorCategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("varchar(1024)");
+
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Length")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Materials")
+                        .IsRequired()
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("PathToImageSchema")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(2048)")
+                        .HasDefaultValue("images/template_image_facade.png");
+
+                    b.Property<string>("ShortName")
+                        .IsRequired()
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<int>("Width")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DecorCategoryId");
+
+                    b.ToTable("Decors", (string)null);
+                });
+
+            modelBuilder.Entity("fam_comfort.Core.Models.DecorCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("PathToImage")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(2048)")
+                        .HasDefaultValue("images/template_image_facade_category.png");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DecorCategories", (string)null);
                 });
 
             modelBuilder.Entity("fam_comfort.Core.Models.Facade", b =>
@@ -82,12 +142,6 @@ namespace fam_comfort.Persistence.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(256)");
-
-                    b.Property<string>("PathToImage")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(2048)")
-                        .HasDefaultValue("images/template_image_facade.png");
 
                     b.Property<string>("PathToImageSchema")
                         .IsRequired()
@@ -130,19 +184,26 @@ namespace fam_comfort.Persistence.Migrations
                     b.ToTable("FacadeCategories", (string)null);
                 });
 
-            modelBuilder.Entity("ColorFacade", b =>
+            modelBuilder.Entity("fam_comfort.Core.Models.Color", b =>
                 {
-                    b.HasOne("fam_comfort.Core.Models.Color", null)
-                        .WithMany()
-                        .HasForeignKey("ColorsId")
+                    b.HasOne("fam_comfort.Core.Models.Facade", "Facade")
+                        .WithMany("Colors")
+                        .HasForeignKey("FacadeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("fam_comfort.Core.Models.Facade", null)
-                        .WithMany()
-                        .HasForeignKey("FacadesId")
+                    b.Navigation("Facade");
+                });
+
+            modelBuilder.Entity("fam_comfort.Core.Models.Decor", b =>
+                {
+                    b.HasOne("fam_comfort.Core.Models.DecorCategory", "DecorCategory")
+                        .WithMany("Decors")
+                        .HasForeignKey("DecorCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("DecorCategory");
                 });
 
             modelBuilder.Entity("fam_comfort.Core.Models.Facade", b =>
@@ -154,6 +215,16 @@ namespace fam_comfort.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("FacadeCategory");
+                });
+
+            modelBuilder.Entity("fam_comfort.Core.Models.DecorCategory", b =>
+                {
+                    b.Navigation("Decors");
+                });
+
+            modelBuilder.Entity("fam_comfort.Core.Models.Facade", b =>
+                {
+                    b.Navigation("Colors");
                 });
 
             modelBuilder.Entity("fam_comfort.Core.Models.FacadeCategory", b =>

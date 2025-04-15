@@ -1,9 +1,9 @@
 namespace fam_comfort.Core.Models;
 
-public class Facade
+public class Facade : Object
 {
-    private Facade(Guid id, string name, string shortName, ushort length, ushort width, ushort height, string description,
-        List<Color> colors, string materials, string pathToImage, string pathToImageSchema)
+    private Facade(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
+        string description, string materials, string pathToImageSchema, Guid facadeCategoryId)
     {
         Id = id;
         Name = name;
@@ -12,46 +12,25 @@ public class Facade
         Width = width;
         Height = height;
         Description = description;
-        Colors = colors;
         Materials = materials;
-        PathToImage = pathToImage;
         PathToImageSchema = pathToImageSchema;
+        FacadeCategoryId = facadeCategoryId;
     }
 
     public Facade()
     {
     }
-    
+
     public Guid Id { get; set; }
-    
-    public string Name { get; set; } = string.Empty;
-    
-    public string ShortName { get; set; } = string.Empty;
-    
-    public ushort Length { get; set; }
-    
-    public ushort Width { get; set; }
-    
-    public ushort Height { get; set; }
-    
-    public string Description { get; set; } = string.Empty;
-
     public List<Color> Colors { get; set; } = [];
-    
-    public string Materials { get; set; } = string.Empty;
-
-    public string PathToImage { get; set; } = string.Empty;
-    
-    public string PathToImageSchema { get; set; } = string.Empty;
-    
     public Guid FacadeCategoryId { get; set; }
-    
+
     public FacadeCategory FacadeCategory { get; set; }
 
     public static Facade? Create(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
-        string description, List<Color> colors, string materials, string pathToImage, string pathToImageSchema)
+        string description, string materials, string pathToImageSchema, Guid facadeCategoryId)
     {
-        return new Facade(id, name, shortName, length, width, height, description, colors, materials, pathToImage,
-            pathToImageSchema);
+        return new Facade(id, name, shortName, length, width, height, description, materials,
+            pathToImageSchema, facadeCategoryId);
     }
 }

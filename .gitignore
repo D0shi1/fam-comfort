@@ -23,7 +23,39 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+# Бинарные файлы и папки отладки
+bin/
+obj/
+*.dll
+*.pdb
 
+# Файлы NuGet
+*.csproj.nuget.dgspec.json
+project.assets.json
+project.nuget.cache
+project.packagespec.json
+*.nuget.info
+
+# Миграции (если они не нужны в репозитории)
+Migrations/
+
+# Конфигурационные файлы
+appsettings.json
+
+# Rider кэш файлы
+*.model.nuget.info
+*.restore.info
+
+# AssemblyInfo файлы
+*AssemblyInfo.cs
+*AssemblyInfoInputs.cache
+*.AssemblyReference.cache
+*.CoreCompileInputs.cache
+*.sourcelink.json
+
+# Ref папки
+ref/
+refint/
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

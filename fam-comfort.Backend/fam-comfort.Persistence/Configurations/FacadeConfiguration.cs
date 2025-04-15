@@ -40,15 +40,10 @@ public class FacadeConfiguration : IEntityTypeConfiguration<Facade>
             .IsRequired();
 
         builder.HasMany(x => x.Colors)
-            .WithMany(x => x.Facades);
+            .WithOne(x => x.Facade);
         
         builder.Property(x => x.Materials)
             .HasColumnType("varchar(256)")
-            .IsRequired();
-        
-        builder.Property(x => x.PathToImage)
-            .HasColumnType("varchar(2048)")
-            .HasDefaultValue("images/template_image_facade.png")
             .IsRequired();
         
         builder.Property(x => x.PathToImageSchema)

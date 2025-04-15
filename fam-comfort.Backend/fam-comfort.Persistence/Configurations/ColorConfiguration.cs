@@ -19,11 +19,13 @@ public class ColorConfiguration : IEntityTypeConfiguration<Color>
             .HasColumnType("varchar(256)")
             .IsRequired();
         
-        builder.Property(x => x.HexColor)
-            .HasColumnType("varchar(8)")
+        builder.Property(x => x.PathToImage)
+            .HasColumnType("varchar(2048)")
+            .HasDefaultValue("images/template_image_facade.png")
             .IsRequired();
         
-        builder.HasMany(x => x.Facades)
-            .WithMany(x => x.Colors);
+        builder.HasOne(x => x.Facade)
+            .WithMany(x => x.Colors)
+            .HasForeignKey(x => x.FacadeId);
     }
 }

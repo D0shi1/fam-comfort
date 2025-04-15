@@ -423,8 +423,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj": {
-              "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj"
+            "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj": {
+              "projectPath": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj"
             }
           }
         }
