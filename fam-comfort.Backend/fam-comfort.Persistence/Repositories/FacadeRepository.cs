@@ -4,41 +4,35 @@ using Microsoft.EntityFrameworkCore;
 
 namespace fam_comfort.Persistence.Repositories;
 
-public class FacadeRepository : IFacadeRepository
+public class FacadeRepository(FamComfortDbContext famComfortDbContext) : IFacadeRepository
 {
-    private readonly FamComfortDbContext _famComfortDbContext;
-
-    public FacadeRepository(FamComfortDbContext famComfortDbContext)
-    {
-        _famComfortDbContext = famComfortDbContext;
-    }
     public async Task<List<Facade>> GetAllAsync(Guid facadeCategoryId)
     {
-        return await _famComfortDbContext.Facades.Where(f => f.FacadeCategoryId == facadeCategoryId).Include(c => c.Colors).ToListAsync();
+        return await famComfortDbContext.Facades.Where(f => f.FacadeCategoryId == facadeCategoryId).Include(c => c.Colors).ToListAsync();
     }
 
     public async Task<Facade> CreateAsync(Facade facade)
     {
-        await _famComfortDbContext.Facades.AddAsync(facade);
-        await _famComfortDbContext.SaveChangesAsync();
+        await famComfortDbContext.Facades.AddAsync(facade);
+        await famComfortDbContext.SaveChangesAsync();
         return facade;
     }
 
     public async Task<Facade?> GetByIdAsync(Guid facadeId)
     {
-        return await _famComfortDbContext.Facades.FirstOrDefaultAsync(f => f.Id == facadeId);
+        return await famComfortDbContext.Facades.FirstOrDefaultAsync(f => f.Id == facadeId);
     }
 
     public async Task<Facade?> GetByColorAsync(Guid colorId)
     {
-        var color = await _famComfortDbContext.Colors.Include(color => color.Facade).FirstOrDefaultAsync(c => c.Id == colorId);
+        var color = await famComfortDbContext.Colors.Include(color => color.Facade).FirstOrDefaultAsync(c => c.Id == colorId);
         
         return color?.Facade;
     }
 
     public async Task<Facade?> GetByNameAsync(string name)
     {
-        return await _famComfortDbContext.Facades.FirstOrDefaultAsync(f => f.Name == name);
+        return await famComfortDbContext.Facades.FirstOrDefaultAsync(f => f.Name == name);
     }
 
     public async Task<Facade?> UpdateAsync(Guid facadeId, string name, string shortName, ushort length,
@@ -56,7 +50,7 @@ public class FacadeRepository : IFacadeRepository
         facade.Materials = UpdateIfNotEmpty(name, facade.Name);
         facade.PathToImageSchema = UpdateIfNotEmpty(name, facade.Name);
 
-        await _famComfortDbContext.SaveChangesAsync();
+        await famComfortDbContext.SaveChangesAsync();
 
         return facade;
     }
@@ -66,15 +60,15 @@ public class FacadeRepository : IFacadeRepository
         var facade = await GetByIdAsync(facadeId);
         if (facade == null) return null;
 
-        _famComfortDbContext.Facades.Remove(facade);
-        await _famComfortDbContext.SaveChangesAsync();
+        famComfortDbContext.Facades.Remove(facade);
+        await famComfortDbContext.SaveChangesAsync();
 
         return facade;
     }
 
     public async Task<bool> FacadeExistsAsync(Guid id)
     {
-        return await _famComfortDbContext.Facades.AnyAsync(s => s.Id == id);
+        return await famComfortDbContext.Facades.AnyAsync(s => s.Id == id);
     }
     
     private string UpdateIfNotEmpty(string newValue, string currentValue) =>

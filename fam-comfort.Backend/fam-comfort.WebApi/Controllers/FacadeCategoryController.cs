@@ -8,19 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace fam_comfort.WebApi.Controllers;
 [Route("api/v1/facade-categories")]
 [ApiController]
-public class FacadeCategoryController : ControllerBase
+public class FacadeCategoryController(FacadeCategoryService service) : ControllerBase
 {
-    private readonly FacadeCategoryService _service;
-
-    public FacadeCategoryController(FacadeCategoryService service)
-    {
-        _service = service;
-    }
-
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        var facadeCategory = await _service.GetByIdAsync(id);
+        var facadeCategory = await service.GetByIdAsync(id);
         
         if(facadeCategory == null) return NotFound();
         
@@ -30,7 +23,7 @@ public class FacadeCategoryController : ControllerBase
     [HttpGet("{name}")]
     public async Task<IActionResult> GetByName(string name)
     {
-        var facadeCategory = await _service.GetByNameAsync(name);
+        var facadeCategory = await service.GetByNameAsync(name);
         
         if(facadeCategory == null) return NotFound();
         
@@ -40,7 +33,7 @@ public class FacadeCategoryController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
     {
-        var facadeCategory = await _service.GetAllAsync(query);
+        var facadeCategory = await service.GetAllAsync(query);
         return Ok(facadeCategory.Select(f => f.ToDto()));
     }
     
@@ -48,7 +41,7 @@ public class FacadeCategoryController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] FacadeCategoryRequest request)
     {
-        await _service.CreateAsync(request.Name, request.PathToImage);
+        await service.CreateAsync(request.Name, request.PathToImage);
         return Created();
     }
 
@@ -56,7 +49,7 @@ public class FacadeCategoryController : ControllerBase
     [HttpPut("update/{id:guid}")]
     public async Task<IActionResult> Update([FromBody] FacadeCategoryRequest request, Guid id)
     {
-        var result = await _service.UpdateAsync(id, request.Name, request.PathToImage);
+        var result = await service.UpdateAsync(id, request.Name, request.PathToImage);
         if(result == null) return NotFound();
         
         return Ok();
@@ -66,7 +59,7 @@ public class FacadeCategoryController : ControllerBase
     [HttpDelete("delete/{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        var result = await _service.DeleteAsync(id);
+        var result = await service.DeleteAsync(id);
         if(result == null) return NotFound();
 
         return Ok();

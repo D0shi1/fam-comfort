@@ -1,5 +1,3 @@
-using fam_comfort.Core.Models;
-
 namespace fam_comfort.Application.ViewModels;
 
 public class FacadeRequest

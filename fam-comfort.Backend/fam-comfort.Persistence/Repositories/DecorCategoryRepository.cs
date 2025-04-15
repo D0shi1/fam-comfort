@@ -5,18 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace fam_comfort.Persistence.Repositories;
 
-public class DecorCategoryRepository : IDecorCategoryRepository
+public class DecorCategoryRepository(FamComfortDbContext context) : IDecorCategoryRepository
 {
-    private readonly FamComfortDbContext _context;
-
-    public DecorCategoryRepository(FamComfortDbContext context)
-    {
-        _context = context;
-    }
-    
     public async Task<List<DecorCategory>> GetAllAsync(QueryObject query)
     {
-        var decorCategories = _context.DecorsCategories.AsQueryable();
+        var decorCategories = context.DecorsCategories.AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(query.Name))
             decorCategories = decorCategories.Where(c => c.Name.Contains(query.Name));
@@ -38,18 +31,18 @@ public class DecorCategoryRepository : IDecorCategoryRepository
 
     public async Task<DecorCategory?> GetByIdAsync(Guid id)
     {
-        return await _context.DecorsCategories.FirstOrDefaultAsync(f => f.Id == id);
+        return await context.DecorsCategories.FirstOrDefaultAsync(f => f.Id == id);
     }
 
     public async Task<DecorCategory?> GetByNameAsync(string name)
     {
-        return await _context.DecorsCategories.FirstOrDefaultAsync(f => f.Name == name);
+        return await context.DecorsCategories.FirstOrDefaultAsync(f => f.Name == name);
     }
 
     public async Task<DecorCategory> CreateAsync(DecorCategory decorCategory)
     {
-        await _context.DecorsCategories.AddAsync(decorCategory);
-        await _context.SaveChangesAsync();
+        await context.DecorsCategories.AddAsync(decorCategory);
+        await context.SaveChangesAsync();
 
         return decorCategory;
     }
@@ -64,7 +57,7 @@ public class DecorCategoryRepository : IDecorCategoryRepository
         if (pathToImage != string.Empty)
             decorCategory.PathToImage = pathToImage;
 
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
 
         return decorCategory;
     }
@@ -74,14 +67,14 @@ public class DecorCategoryRepository : IDecorCategoryRepository
         var decorCategory = await GetByIdAsync(decorCategoryId);
         if (decorCategory == null) return null;
 
-        _context.DecorsCategories.Remove(decorCategory);
-        await _context.SaveChangesAsync();
+        context.DecorsCategories.Remove(decorCategory);
+        await context.SaveChangesAsync();
 
         return decorCategory;
     }
 
     public async Task<bool> DecorCategoryExistsAsync(Guid id)
     {
-        return await _context.DecorsCategories.AnyAsync(s => s.Id == id);
+        return await context.DecorsCategories.AnyAsync(s => s.Id == id);
     }
 }

@@ -25,7 +25,7 @@ public class Decor : BuildingElement
     public Guid DecorCategoryId { get; set; }
     public DecorCategory DecorCategory { get; set; }
 
-    public static Decor? Create(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
+    public static Decor Create(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
         string description, string materials, string pathToImageSchema, Guid facadeCategoryId)
     {
         return new Decor(id, name, shortName, length, width, height, description, materials,

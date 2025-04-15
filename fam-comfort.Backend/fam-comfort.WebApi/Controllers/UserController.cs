@@ -9,10 +9,8 @@ namespace fam_comfort.WebApi.Controllers;
 [ApiController]
 public class UserController(UserService userService) : ControllerBase
 {
-    private readonly UserService _userService = userService;
-
     [HttpPost("register")]
-    public async Task<IActionResult> Register(UserRequest request, UserService userService)
+    public async Task<IActionResult> Register(UserRequest request)
     {
         var user = await userService.Register(request.Username, request.Password);
 
@@ -20,7 +18,7 @@ public class UserController(UserService userService) : ControllerBase
     }
     
     [HttpPost("login")]
-    public async Task<IActionResult> Login(UserRequest request, UserService userService)
+    public async Task<IActionResult> Login(UserRequest request)
     {
         var token = await userService.Login(request.Username, request.Password);
         

@@ -27,7 +27,7 @@ public class Facade : BuildingElement
 
     public FacadeCategory FacadeCategory { get; set; }
 
-    public static Facade? Create(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
+    public static Facade Create(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
         string description, string materials, string pathToImageSchema, Guid facadeCategoryId)
     {
         return new Facade(id, name, shortName, length, width, height, description, materials,

@@ -4,41 +4,35 @@ using fam_comfort.Core.Models;
 
 namespace fam_comfort.Application.Services;
 
-public class FacadeCategoryService
+public class FacadeCategoryService(IFacadeCategoryRepository facadeCategoryRepository)
 {
-    private readonly IFacadeCategoryRepository _facadeCategoryRepository;
-
-    public FacadeCategoryService(IFacadeCategoryRepository facadeCategoryRepository)
-    {
-        _facadeCategoryRepository = facadeCategoryRepository;
-    }
     public async Task<List<FacadeCategory>> GetAllAsync(QueryObject query)
     {
-        return await _facadeCategoryRepository.GetAllAsync(query);
+        return await facadeCategoryRepository.GetAllAsync(query);
     }
     public async Task<FacadeCategory?> GetByIdAsync(Guid id)
     {
-        return await _facadeCategoryRepository.GetByIdAsync(id);
+        return await facadeCategoryRepository.GetByIdAsync(id);
     }
     
     public async Task<FacadeCategory?> GetByNameAsync(string name)
     {
-        return await _facadeCategoryRepository.GetByNameAsync(name);
+        return await facadeCategoryRepository.GetByNameAsync(name);
     }
 
     public async Task<FacadeCategory?> UpdateAsync(Guid id, string name, string pathToImage)
     {
-        return await _facadeCategoryRepository.UpdateAsync(id, name, pathToImage);
+        return await facadeCategoryRepository.UpdateAsync(id, name, pathToImage);
     }
     
     public async Task<FacadeCategory?> DeleteAsync(Guid id)
     {
-        return await _facadeCategoryRepository.DeleteAsync(id);
+        return await facadeCategoryRepository.DeleteAsync(id);
     }
     
     public async Task <FacadeCategory> CreateAsync(string name, string pathToImage)
     {
         var facadeCategory = FacadeCategory.Create(Guid.NewGuid(), name, pathToImage);
-        return await _facadeCategoryRepository.CreateAsync(facadeCategory);
+        return await facadeCategoryRepository.CreateAsync(facadeCategory);
     }
 }

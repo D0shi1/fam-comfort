@@ -21,7 +21,7 @@ public class DecorCategory
     
     public List<Decor> Decors { get; set; } = [];
 
-    public static DecorCategory? Create(Guid id, string name, string pathToImage)
+    public static DecorCategory Create(Guid id, string name, string pathToImage)
     {
         return new DecorCategory(id, name, pathToImage);
     }

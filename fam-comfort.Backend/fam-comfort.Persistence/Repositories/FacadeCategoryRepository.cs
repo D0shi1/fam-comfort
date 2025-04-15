@@ -5,18 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace fam_comfort.Persistence.Repositories;
 
-public class FacadeCategoryRepository : IFacadeCategoryRepository
+public class FacadeCategoryRepository(FamComfortDbContext context) : IFacadeCategoryRepository
 {
-    private readonly FamComfortDbContext _context;
-
-    public FacadeCategoryRepository(FamComfortDbContext context)
-    {
-        _context = context;
-    }
-
     public async Task<List<FacadeCategory>> GetAllAsync(QueryObject query)
     {
-        var facadeCategories = _context.FacadesCategories.AsQueryable();
+        var facadeCategories = context.FacadesCategories.AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(query.Name))
             facadeCategories = facadeCategories.Where(c => c.Name.Contains(query.Name));
@@ -38,18 +31,18 @@ public class FacadeCategoryRepository : IFacadeCategoryRepository
 
     public async Task<FacadeCategory?> GetByIdAsync(Guid id)
     {
-        return await _context.FacadesCategories.FirstOrDefaultAsync(f => f.Id == id);
+        return await context.FacadesCategories.FirstOrDefaultAsync(f => f.Id == id);
     }
 
     public async Task<FacadeCategory?> GetByNameAsync(string name)
     {
-        return await _context.FacadesCategories.FirstOrDefaultAsync(f => f.Name == name);
+        return await context.FacadesCategories.FirstOrDefaultAsync(f => f.Name == name);
     }
 
     public async Task<FacadeCategory> CreateAsync(FacadeCategory facadeCategory)
     {
-        await _context.FacadesCategories.AddAsync(facadeCategory);
-        await _context.SaveChangesAsync();
+        await context.FacadesCategories.AddAsync(facadeCategory);
+        await context.SaveChangesAsync();
 
         return facadeCategory;
     }
@@ -64,7 +57,7 @@ public class FacadeCategoryRepository : IFacadeCategoryRepository
         if (pathToImage != string.Empty)
             facadeCategory.PathToImage = pathToImage;
 
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
 
         return facadeCategory;
     }
@@ -74,14 +67,14 @@ public class FacadeCategoryRepository : IFacadeCategoryRepository
         var facadeCategory = await GetByIdAsync(id);
         if (facadeCategory == null) return null;
 
-        _context.FacadesCategories.Remove(facadeCategory);
-        await _context.SaveChangesAsync();
+        context.FacadesCategories.Remove(facadeCategory);
+        await context.SaveChangesAsync();
 
         return facadeCategory;
     }
 
     public async Task<bool> FacadeCategoryExistsAsync(Guid id)
     {
-        return await _context.FacadesCategories.AnyAsync(s => s.Id == id);
+        return await context.FacadesCategories.AnyAsync(s => s.Id == id);
     }
 }

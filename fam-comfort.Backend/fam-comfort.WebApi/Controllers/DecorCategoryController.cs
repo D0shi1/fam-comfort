@@ -9,19 +9,12 @@ namespace fam_comfort.WebApi.Controllers;
 
 [Route("api/v1/decor-categories")]
 [ApiController]
-public class DecorCategoryController : ControllerBase
+public class DecorCategoryController(DecorCategoryService service) : ControllerBase
 {
-    private readonly DecorCategoryService _service;
-
-    public DecorCategoryController(DecorCategoryService service)
-    {
-        _service = service;
-    }
-
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        var decorCategory = await _service.GetByIdAsync(id);
+        var decorCategory = await service.GetByIdAsync(id);
         
         if(decorCategory == null) return NotFound();
         
@@ -31,7 +24,7 @@ public class DecorCategoryController : ControllerBase
     [HttpGet("{name}")]
     public async Task<IActionResult> GetByName(string name)
     {
-        var decorCategory = await _service.GetByNameAsync(name);
+        var decorCategory = await service.GetByNameAsync(name);
         
         if(decorCategory == null) return NotFound();
         
@@ -41,7 +34,7 @@ public class DecorCategoryController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
     {
-        var decorCategory = await _service.GetAllAsync(query);
+        var decorCategory = await service.GetAllAsync(query);
         return Ok(decorCategory.Select(f => f.ToDto()));
     }
     
@@ -49,7 +42,7 @@ public class DecorCategoryController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] DecorCategoryRequest request)
     {
-        await _service.CreateAsync(request.Name, request.PathToImage);
+        await service.CreateAsync(request.Name, request.PathToImage);
         return Created();
     }
 
@@ -57,7 +50,7 @@ public class DecorCategoryController : ControllerBase
     [HttpPut("update/{id:guid}")]
     public async Task<IActionResult> Update([FromBody] DecorCategoryRequest request, Guid id)
     {
-        var result = await _service.UpdateAsync(id, request.Name, request.PathToImage);
+        var result = await service.UpdateAsync(id, request.Name, request.PathToImage);
         if(result == null) return NotFound();
         
         return Ok();
@@ -67,7 +60,7 @@ public class DecorCategoryController : ControllerBase
     [HttpDelete("delete/{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        var result = await _service.DeleteAsync(id);
+        var result = await service.DeleteAsync(id);
         if(result == null) return NotFound();
 
         return Ok();

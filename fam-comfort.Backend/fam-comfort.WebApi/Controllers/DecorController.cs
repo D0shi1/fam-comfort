@@ -8,19 +8,12 @@ namespace fam_comfort.WebApi.Controllers;
 
 [Route("api/v1/decor")]
 [ApiController]
-public class DecorController : ControllerBase
+public class DecorController(DecorService decorService) : ControllerBase
 {
-    private readonly DecorService _decorService;
-
-    public DecorController(DecorService decorService)
-    {
-        _decorService = decorService;
-    }
-
     [HttpGet("{decorCategoryId:guid}")]
     public async Task<IActionResult> GetAll(Guid decorCategoryId)
     {
-        var decors = await _decorService.GetAllAsync(decorCategoryId);
+        var decors = await decorService.GetAllAsync(decorCategoryId);
         if (decors is null) return NotFound();
 
         return Ok(decors.Select(f => f.ToDto()));
@@ -29,7 +22,7 @@ public class DecorController : ControllerBase
     [HttpGet("get-by-id/{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        var decorCategory = await _decorService.GetByIdAsync(id);
+        var decorCategory = await decorService.GetByIdAsync(id);
 
         if (decorCategory == null) return NotFound();
 
@@ -39,7 +32,7 @@ public class DecorController : ControllerBase
     [HttpGet("{name}")]
     public async Task<IActionResult> GetByName(string name)
     {
-        var decorCategory = await _decorService.GetByNameAsync(name);
+        var decorCategory = await decorService.GetByNameAsync(name);
 
         if (decorCategory == null) return NotFound();
 
@@ -50,7 +43,7 @@ public class DecorController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] DecorRequest request)
     {
-        var decor = await _decorService.CreateAsync(request.DecorCategoryId, request.Name, request.ShortName,
+        var decor = await decorService.CreateAsync(request.DecorCategoryId, request.Name, request.ShortName,
             request.Length, request.Width, request.Height, request.Description,
             request.Materials, request.PathToImageSchema);
 
@@ -63,7 +56,7 @@ public class DecorController : ControllerBase
     [HttpPut("update/{id:guid}")]
     public async Task<IActionResult> Update([FromBody] DecorRequest request, Guid id)
     {
-        var result = await _decorService.UpdateAsync(id, request.Name, request.ShortName, request.Length,
+        var result = await decorService.UpdateAsync(id, request.Name, request.ShortName, request.Length,
             request.Width, request.Height, request.Description, request.Materials, request.PathToImageSchema);
         if (result == null) return NotFound();
 
@@ -74,7 +67,7 @@ public class DecorController : ControllerBase
     [HttpDelete("delete/{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        var result = await _decorService.DeleteAsync(id);
+        var result = await decorService.DeleteAsync(id);
         if (result == null) return NotFound();
 
         return Ok();

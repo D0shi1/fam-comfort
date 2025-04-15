@@ -21,7 +21,7 @@ public class FacadeCategory
     
     public List<Facade> Facades { get; set; } = [];
 
-    public static FacadeCategory? Create(Guid id, string name, string pathToImage)
+    public static FacadeCategory Create(Guid id, string name, string pathToImage)
     {
         return new FacadeCategory(id, name, pathToImage);
     }

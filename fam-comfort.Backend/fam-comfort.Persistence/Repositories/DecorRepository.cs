@@ -4,35 +4,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace fam_comfort.Persistence.Repositories;
 
-public class DecorRepository : IDecorRepository
+public class DecorRepository(FamComfortDbContext famComfortDbContext) : IDecorRepository
 {
-    private readonly FamComfortDbContext _famComfortDbContext;
-
-    public DecorRepository(FamComfortDbContext famComfortDbContext)
-    {
-        _famComfortDbContext = famComfortDbContext;
-    }
     public async Task<List<Decor>> GetAllAsync(Guid decorCategoryId)
     {
-        return await _famComfortDbContext.Decors.Where(f => f.DecorCategoryId == decorCategoryId).ToListAsync();
+        return await famComfortDbContext.Decors.Where(f => f.DecorCategoryId == decorCategoryId).ToListAsync();
     }
 
     public async Task<Decor> CreateAsync(Decor facade)
     {
-        await _famComfortDbContext.Decors.AddAsync(facade);
-        await _famComfortDbContext.SaveChangesAsync();
+        await famComfortDbContext.Decors.AddAsync(facade);
+        await famComfortDbContext.SaveChangesAsync();
         return facade;
     }
 
     public async Task<Decor?> GetByIdAsync(Guid facadeId)
     {
-        return await _famComfortDbContext.Decors.FirstOrDefaultAsync(f => f.Id == facadeId);
+        return await famComfortDbContext.Decors.FirstOrDefaultAsync(f => f.Id == facadeId);
     }
     
 
     public async Task<Decor?> GetByNameAsync(string name)
     {
-        return await _famComfortDbContext.Decors.FirstOrDefaultAsync(f => f.Name == name);
+        return await famComfortDbContext.Decors.FirstOrDefaultAsync(f => f.Name == name);
     }
 
     public async Task<Decor?> UpdateAsync(Guid facadeId, string name, string shortName, ushort length,
@@ -50,7 +44,7 @@ public class DecorRepository : IDecorRepository
         facade.Materials = UpdateIfNotEmpty(name, facade.Name);
         facade.PathToImageSchema = UpdateIfNotEmpty(name, facade.Name);
 
-        await _famComfortDbContext.SaveChangesAsync();
+        await famComfortDbContext.SaveChangesAsync();
 
         return facade;
     }
@@ -60,15 +54,15 @@ public class DecorRepository : IDecorRepository
         var facade = await GetByIdAsync(facadeId);
         if (facade == null) return null;
 
-        _famComfortDbContext.Decors.Remove(facade);
-        await _famComfortDbContext.SaveChangesAsync();
+        famComfortDbContext.Decors.Remove(facade);
+        await famComfortDbContext.SaveChangesAsync();
 
         return facade;
     }
 
     public async Task<bool> FacadeExistsAsync(Guid id)
     {
-        return await _famComfortDbContext.Decors.AnyAsync(s => s.Id == id);
+        return await famComfortDbContext.Decors.AnyAsync(s => s.Id == id);
     }
     
     private string UpdateIfNotEmpty(string newValue, string currentValue) =>
