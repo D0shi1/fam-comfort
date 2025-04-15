@@ -11,6 +11,7 @@ public class FamComfortDbContext(DbContextOptions<FamComfortDbContext> options) 
     public DbSet<Color> Colors { get; set; }
     public DbSet<FacadeCategory> FacadesCategories { get; set; }
     public DbSet<DecorCategory> DecorsCategories { get; set; }
+    public DbSet<User> Users { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -19,6 +20,7 @@ public class FamComfortDbContext(DbContextOptions<FamComfortDbContext> options) 
         modelBuilder.ApplyConfiguration(new FacadeConfiguration());
         modelBuilder.ApplyConfiguration(new DecorConfiguration());
         modelBuilder.ApplyConfiguration(new ColorConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
         
         base.OnModelCreating(modelBuilder);
     }

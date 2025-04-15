@@ -25,7 +25,7 @@ public class FacadeCategoryRepository : IFacadeCategoryRepository
         {
             if (query.SortBy.Equals("Name", StringComparison.OrdinalIgnoreCase))
             {
-                facadeCategories = query.IsDecsending
+                facadeCategories = query.IsDescending
                     ? facadeCategories.OrderByDescending(f => f.Name)
                     : facadeCategories.OrderBy(s => s.Name);
             }

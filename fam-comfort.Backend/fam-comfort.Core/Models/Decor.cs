@@ -1,6 +1,6 @@
 namespace fam_comfort.Core.Models;
 
-public class Decor : Object
+public class Decor : BuildingElement
 {
     private Decor(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
         string description, string materials, string pathToImageSchema, Guid decorCategoryId)

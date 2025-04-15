@@ -398,33 +398,32 @@
     ]
   },
   "packageFolders": {
-    "/Users/phantom/.nuget/packages/": {}
+    "/Users/daniilkopot/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
+      "projectUniqueName": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
       "projectName": "fam-comfort.Infrastructure",
-      "projectPath": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
-      "packagesPath": "/Users/phantom/.nuget/packages/",
-      "outputPath": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/obj/",
+      "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/fam-comfort.Infrastructure.csproj",
+      "packagesPath": "/Users/daniilkopot/.nuget/packages/",
+      "outputPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/phantom/.nuget/NuGet/NuGet.Config"
+        "/Users/daniilkopot/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj": {
-              "projectPath": "/Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj"
+            "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj": {
+              "projectPath": "/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Application/fam-comfort.Application.csproj"
             }
           }
         }
@@ -433,11 +432,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -469,7 +463,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/8.0.15/libexec/sdk/8.0.115/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

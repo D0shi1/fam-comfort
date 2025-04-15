@@ -1,13 +1,14 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using fam_comfort.Application.Interfaces.Authentication;
 using fam_comfort.Core.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace fam_comfort.Infrastructure;
 
-public class JwtProvider(IOptions<JwtOptions> options)
+public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
 {
     private readonly JwtOptions _options = options.Value;
 

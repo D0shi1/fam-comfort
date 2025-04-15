@@ -184,6 +184,25 @@ namespace fam_comfort.Persistence.Migrations
                     b.ToTable("FacadeCategories", (string)null);
                 });
 
+            modelBuilder.Entity("fam_comfort.Core.Models.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("varchar(128)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users", (string)null);
+                });
+
             modelBuilder.Entity("fam_comfort.Core.Models.Color", b =>
                 {
                     b.HasOne("fam_comfort.Core.Models.Facade", "Facade")

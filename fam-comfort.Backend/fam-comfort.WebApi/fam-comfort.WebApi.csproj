@@ -24,6 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\fam-comfort.Infrastructure\fam-comfort.Infrastructure.csproj" />
       <ProjectReference Include="..\fam-comfort.Persistence\fam-comfort.Persistence.csproj" />
     </ItemGroup>
 

@@ -19,7 +19,7 @@ public class User
     
     public string PasswordHash { get; set; } = string.Empty;
 
-    public static User? Create(Guid id, string username, string passwordHash)
+    public static User Create(Guid id, string username, string passwordHash)
     {
         return new User(id, username, passwordHash);
     }

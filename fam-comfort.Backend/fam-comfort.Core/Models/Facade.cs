@@ -1,6 +1,6 @@
 namespace fam_comfort.Core.Models;
 
-public class Facade : Object
+public class Facade : BuildingElement
 {
     private Facade(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
         string description, string materials, string pathToImageSchema, Guid facadeCategoryId)

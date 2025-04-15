@@ -4,10 +4,10 @@ namespace fam_comfort.Application.Interfaces.Repositories;
 
 public interface IUserRepository
 {
-    Task<User> GetByIdAsync(Guid id);
+    Task<User?> GetByIdAsync(Guid id);
     Task<IEnumerable<User>> GetAllAsync();
-    Task<User> GetByUsernameAsync(string username);
-    Task AddAsync(User user);
-    Task UpdateAsync(User user);
-    Task DeleteAsync(User user);
+    Task<User?> GetByUsernameAsync(string username);
+    Task<User?> AddAsync(User user);
+    Task<User?>  UpdateAsync(Guid userId, string username, string passwordHash);
+    Task<User?>  DeleteAsync(Guid userId);
 }

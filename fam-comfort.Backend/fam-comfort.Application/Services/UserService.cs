@@ -6,14 +6,15 @@ namespace fam_comfort.Application.Services;
 
 public class UserService(IPasswordHasher passwordHasher, IUserRepository userRepository, IJwtProvider jwtProvider)
 {
-    public async Task Register(string username, string password)
+    public async Task<User> Register(string username, string password)
     {
         var hashedPassword = passwordHasher.Generate(password);
         
         var user = User.Create(Guid.NewGuid(), username, hashedPassword);
+
+        await userRepository.AddAsync(user);
         
-        if(user != null)
-            await userRepository.AddAsync(user);
+        return user;
     }
 
     public async Task<string> Login(string username, string password)

@@ -1,6 +1,6 @@
 namespace fam_comfort.Core.Models;
 
-public class Object
+public class BuildingElement
 {
     public string Name { get; set; } = string.Empty;
 

@@ -1,8 +1,11 @@
+using fam_comfort.Application.Interfaces.Authentication;
 using fam_comfort.Application.Interfaces.Repositories;
 using fam_comfort.Application.Services;
 using fam_comfort.Core.Models;
+using fam_comfort.Infrastructure;
 using fam_comfort.Persistence;
 using fam_comfort.Persistence.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,12 +18,17 @@ builder.Services.AddControllers().AddNewtonsoftJson(x =>
 {
     x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 builder.Services.AddScoped<IFacadeRepository, FacadeRepository>();
 builder.Services.AddScoped<IFacadeCategoryRepository, FacadeCategoryRepository>();
 builder.Services.AddScoped<IColorRepository, ColorRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<FacadeService>();
 builder.Services.AddScoped<FacadeCategoryService>();
 builder.Services.AddScoped<ColorService>();
+builder.Services.AddScoped<UserService>();
 
 builder.Services.AddDbContext<FamComfortDbContext>(options =>
 {

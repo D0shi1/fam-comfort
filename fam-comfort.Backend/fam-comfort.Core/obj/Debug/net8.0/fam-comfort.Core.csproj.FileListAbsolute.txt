@@ -10,3 +10,15 @@
 /Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/refint/fam-comfort.Core.dll
 /Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/fam-comfort.Core.pdb
 /Users/phantom/Documents/GitHub/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/ref/fam-comfort.Core.dll
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/bin/Debug/net8.0/fam-comfort.Core.deps.json
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/bin/Debug/net8.0/fam-comfort.Core.dll
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/bin/Debug/net8.0/fam-comfort.Core.pdb
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/fam-comfort.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/fam-comfort.Core.AssemblyInfoInputs.cache
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/fam-comfort.Core.AssemblyInfo.cs
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/fam-comfort.Core.csproj.CoreCompileInputs.cache
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/fam-comfort.Core.sourcelink.json
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/fam-comfort.Core.dll
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/refint/fam-comfort.Core.dll
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/fam-comfort.Core.pdb
+/Users/daniilkopot/RiderProjects/fam-comfort/fam-comfort.Backend/fam-comfort.Core/obj/Debug/net8.0/ref/fam-comfort.Core.dll
