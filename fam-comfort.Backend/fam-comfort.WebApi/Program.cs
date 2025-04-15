@@ -21,12 +21,16 @@ builder.Services.AddControllers().AddNewtonsoftJson(x =>
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 builder.Services.AddScoped<IFacadeRepository, FacadeRepository>();
 builder.Services.AddScoped<IFacadeCategoryRepository, FacadeCategoryRepository>();
+builder.Services.AddScoped<IDecorRepository, DecorRepository>();
+builder.Services.AddScoped<IDecorCategoryRepository, DecorCategoryRepository>();
 builder.Services.AddScoped<IColorRepository, ColorRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<FacadeService>();
 builder.Services.AddScoped<FacadeCategoryService>();
+builder.Services.AddScoped<DecorService>();
+builder.Services.AddScoped<DecorCategoryService>();
 builder.Services.AddScoped<ColorService>();
 builder.Services.AddScoped<UserService>();
 
