@@ -10,26 +10,29 @@ export function AboutPage() {
           </h1>
           <div className="flex flex-col md:flex-row items-center md:space-x-6">
             <div className="md:w-1/2 text-center md:text-left mb-6 md:mb-0">
-              <p className="text-lg text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed
-                nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
-                ipsum.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-                Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis
-                sagittis ipsum.Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Integer nec odio. Praesent libero. Sed cursus
-                ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
-                imperdiet. Duis sagittis ipsum.Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Integer nec odio. Praesent libero.
-                Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh
-                elementum imperdiet. Duis sagittis ipsum.Lorem ipsum dolor sit
-                amet, consectetur adipiscing elit. Integer nec odio. Praesent
-                libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem
-                at nibh elementum imperdiet. Duis sagittis ipsum.Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-                Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
-                quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
+              <p className="text-lg mt-2 text-gray-700">
+                “ОМЦ-Профиль” — это <b>... лет успешной работы</b> в сфере
+                производства мебельных комплектующих, построенные на{" "}
+                <b>доверии</b> и <b>профессионализме</b>. Мы создаём не просто
+                продукцию, а воплощаем <b>эстетические решения</b>.
+                <br />
+                Наши производственные мощности впечатляют — <b>4700 м²</b>, где
+                рождаются:
+                <br />- Погонажный профиль с <b>идеальной геометрией</b>,
+                <br />- Декоративные элементы, украшающие <b>любую мебель</b>,
+                <br />- Рамочные фасады из МДФ и <b>корпусная мебель</b>.
+                <br />
+                За годы работы мы <b>завоевали доверие</b> партнёров в <br />Беларуси,
+                <br />России, <br />Украине, <br />Латвии, <br />Казахстане и Азербайджане.
+                <br />
+                Мы <b>экспериментируем с формами</b>, материалами и цветами,
+                чтобы радовать вас <b>актуальным ассортиментом</b>.
+                <br />
+                Наши изделия создаются на{" "}
+                <b>высокотехнологичном оборудовании</b>, которое обеспечивает{" "}
+                <b>идеальный результат</b>.
+                Присоединяйтесь к миру <b>надёжности</b> и изящества от
+                "ОМЦ-Профиль”!
               </p>
             </div>
 
