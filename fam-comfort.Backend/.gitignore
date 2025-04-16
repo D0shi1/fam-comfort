@@ -56,6 +56,7 @@ appsettings.json
 # Ref папки
 ref/
 refint/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -66,3 +67,8 @@ refint/
 *.ntvs*
 *.njsproj
 *.sw?
+/fam-comfort.Persistence/obj/
+/fam-comfort.WebApi/obj/
+/fam-comfort.Infrastructure/obj/
+/fam-comfort.Core/obj/
+/fam-comfort.Application/obj/
