@@ -18,6 +18,8 @@ public class Color
     public string Name { get; set; }
     public string PathToImage { get; set; }
     public Facade Facade { get; set; }
+    public Product Product { get; set; }
+    public Guid ProductId { get; set; }
     public Guid FacadeId { get; set; }
 
     public static Color Create(Guid id, string name, string pathToImage, Guid facadeId)
