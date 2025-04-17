@@ -37,7 +37,7 @@ public class CategoryController : ControllerBase
         return Ok(category.ToDto());
     }
     
-    [HttpGet("{id:guid}")]
+    [HttpGet("{catalogId:guid}")]
     public async Task<IActionResult> GetAll(Guid id)
     {
         var category = await _categoryService.GetAllAsync(id);

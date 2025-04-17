@@ -36,7 +36,7 @@ public class ProductController : ControllerBase
         return Ok(product.ToDto());
     }
     
-    [HttpGet("get-by-color/{id:guid}")]
+    [HttpGet("get-by-color/{colorId:guid}")]
     public async Task<IActionResult> GetByColor(Guid id)
     {
         var product = await _productService.GetByColorAsync(id);
