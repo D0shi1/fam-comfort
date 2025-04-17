@@ -1,7 +1,9 @@
-namespace fam_comfort.Application.ViewModels;
+namespace fam_comfort.WebApi.Contract;
 
-public class DecorCategoryRequest
+public class CategoryDto
 {
+    public Guid CategoryId { get; set; }
+    
     public string Name { get; set; } = string.Empty;
     
     public string PathToImage { get; set; } = string.Empty;

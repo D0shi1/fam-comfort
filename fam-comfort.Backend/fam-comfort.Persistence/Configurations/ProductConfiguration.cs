@@ -16,11 +16,11 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .IsRequired();
         
         builder.Property(x => x.Name)
-            .HasColumnType("varchar(256)")
+            .HasColumnType("nvarchar(256)")
             .IsRequired();
         
         builder.Property(x => x.ShortName)
-            .HasColumnType("varchar(128)")
+            .HasColumnType("nvarchar(128)")
             .IsRequired();
         
         builder.Property(x => x.Length)
@@ -36,14 +36,14 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .IsRequired();
         
         builder.Property(x => x.Description)
-            .HasColumnType("varchar(1024)")
+            .HasColumnType("nvarchar(1024)")
             .IsRequired();
 
         builder.HasMany(x => x.Colors)
             .WithOne(x => x.Product);
         
         builder.Property(x => x.Materials)
-            .HasColumnType("varchar(256)")
+            .HasColumnType("nvarchar(256)")
             .IsRequired();
         
         builder.Property(x => x.PathToImageSchema)
@@ -53,6 +53,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
 
         builder.HasOne(x => x.Category)
             .WithMany(x => x.Products)
-            .HasForeignKey(x => x.CategoryId);
+            .HasForeignKey(x => x.CategoryId)
+            .HasPrincipalKey(x => x.Id);
     }
 }

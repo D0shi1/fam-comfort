@@ -16,7 +16,7 @@ public class CatalogConfiguration : IEntityTypeConfiguration<Catalog>
             .IsRequired();
         
         builder.Property(x => x.Name)
-            .HasColumnType("varchar(256)")
+            .HasColumnType("nvarchar(256)")
             .IsRequired();
         
         builder.Property(x => x.PathToImage)

@@ -3,13 +3,13 @@ using fam_comfort.WebApi.Contract;
 
 namespace fam_comfort.WebApi.Mapper;
 
-public static class DecorCategoryMapper
+public static class CategoryMapper
 {
-    public static DecorCategoryDto ToDto(this DecorCategory category)
+    public static CategoryDto ToDto(this Category category)
     {
-        return new DecorCategoryDto
+        return new CategoryDto
         {
-            Id = category.Id,
+            CategoryId = category.Id,
             Name = category.Name,
             PathToImage = category.PathToImage,
         };

@@ -15,7 +15,7 @@ public class CatalogRepository : ICatalogRepository
     }
     public async Task<List<Catalog>> GetAllAsync(QueryObject query)
     {
-        var catalogs = _context.Catalogs.AsQueryable();
+        var catalogs = _context.Catalogs.Include(c => c.Categories).AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(query.Name))
             catalogs = catalogs.Where(c => c.Name.Contains(query.Name));
@@ -61,12 +61,25 @@ public class CatalogRepository : ICatalogRepository
         
         catalog.Name = name;
         catalog.PathToImage = pathToImage;
-
+        
+        await _context.SaveChangesAsync();
         return catalog;
     }
 
-    public Task<Catalog?> DeleteAsync(Guid catalogId)
+    public async Task<Catalog?> DeleteAsync(Guid catalogId)
     {
-        throw new NotImplementedException();
+        var catalog = await GetByIdAsync(catalogId);
+        
+        if(catalog is null) return null;
+        
+        _context.Remove(catalog);
+        await _context.SaveChangesAsync();
+        
+        return catalog;
+    }
+
+    public async Task<bool> ExistsAsync(Guid catalogId)
+    {
+        return await _context.Catalogs.AnyAsync(s => s.Id == catalogId);
     }
 }

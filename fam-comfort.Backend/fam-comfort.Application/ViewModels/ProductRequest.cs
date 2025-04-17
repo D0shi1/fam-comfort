@@ -1,8 +1,8 @@
 namespace fam_comfort.Application.ViewModels;
 
-public class FacadeRequest
+public class ProductRequest
 {
-    public Guid FacadeCategoryId { get; set; }
+    public Guid CategoryId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string ShortName { get; set; } = string.Empty;
     public ushort Length { get; set; }

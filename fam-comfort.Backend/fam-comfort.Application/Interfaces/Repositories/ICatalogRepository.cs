@@ -11,4 +11,5 @@ public interface ICatalogRepository
     Task<Catalog> CreateAsync(Catalog catalog);
     Task<Catalog?> UpdateAsync(Guid catalogId, string name, string pathToImage);
     Task<Catalog?> DeleteAsync(Guid catalogId);
+    Task<bool> ExistsAsync(Guid catalogId);
 }

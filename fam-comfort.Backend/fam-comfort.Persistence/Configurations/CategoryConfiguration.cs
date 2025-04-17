@@ -16,7 +16,7 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
             .IsRequired();
         
         builder.Property(x => x.Name)
-            .HasColumnType("varchar(256)")
+            .HasColumnType("nvarchar(256)")
             .IsRequired();
         
         builder.Property(x => x.PathToImage)
@@ -27,9 +27,8 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
         builder.HasOne(x => x.Catalog)
             .WithMany(x => x.Categories)
             .HasForeignKey(x => x.CatalogId);
-        
+
         builder.HasMany(x => x.Products)
-            .WithOne(x => x.Category)
-            .HasForeignKey(x => x.CategoryId);
+            .WithOne(x => x.Category);
     }
 }

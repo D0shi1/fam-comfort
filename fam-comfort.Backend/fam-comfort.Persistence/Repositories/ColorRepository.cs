@@ -6,9 +6,9 @@ namespace fam_comfort.Persistence.Repositories;
 
 public class ColorRepository(FamComfortDbContext context) : IColorRepository
 {
-    public async Task<List<Color>> GetAllAsync(Guid facadeId)
+    public async Task<List<Color>> GetAllAsync(Guid productId)
     {
-        return await context.Colors.Where(c => c.FacadeId == facadeId).ToListAsync();
+        return await context.Colors.Where(c => c.ProductId == productId).ToListAsync();
     }
 
     public async Task<Color> CreateAsync(Color color)

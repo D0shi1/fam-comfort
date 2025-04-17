@@ -24,8 +24,8 @@ public class ColorConfiguration : IEntityTypeConfiguration<Color>
             .HasDefaultValue("images/template_image_facade.png")
             .IsRequired();
         
-        builder.HasOne(x => x.Facade)
+        builder.HasOne(x => x.Product)
             .WithMany(x => x.Colors)
-            .HasForeignKey(x => x.FacadeId);
+            .HasForeignKey(x => x.ProductId);
     }
 }

@@ -1,8 +1,6 @@
-using fam_comfort.Core.Models;
-
 namespace fam_comfort.WebApi.Contract;
 
-public class FacadeDto
+public class ProductDto
 {
     public Guid Id { get; set; }
     

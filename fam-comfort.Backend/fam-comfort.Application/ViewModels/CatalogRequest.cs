@@ -1,9 +1,7 @@
-namespace fam_comfort.WebApi.Contract;
+namespace fam_comfort.Application.ViewModels;
 
-public class FacadeCategoryDto
+public class CatalogRequest
 {
-    public Guid Id { get; set; }
-    
     public string Name { get; set; } = string.Empty;
     
     public string PathToImage { get; set; } = string.Empty;
