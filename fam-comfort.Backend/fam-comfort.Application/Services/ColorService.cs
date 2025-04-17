@@ -3,11 +3,11 @@ using fam_comfort.Core.Models;
 
 namespace fam_comfort.Application.Services;
 
-public class ColorService(IColorRepository colorRepository, IFacadeRepository facadeRepository)
+public class ColorService(IColorRepository colorRepository, IProductRepository productRepository)
 {
     public async Task<List<Color>?> GetAllAsync(Guid facadeId)
     {
-        var existFacade = await facadeRepository.FacadeExistsAsync(facadeId);
+        var existFacade = await productRepository.ExistsAsync(facadeId);
         if (!existFacade) return null;
 
         return await colorRepository.GetAllAsync(facadeId);
@@ -28,12 +28,12 @@ public class ColorService(IColorRepository colorRepository, IFacadeRepository fa
         return await colorRepository.DeleteAsync(id);
     }
 
-    public async Task<Color?> CreateAsync(Guid facadeId, string name, string pathToImage)
+    public async Task<Color?> CreateAsync(Guid productId, string name, string pathToImage)
     {
-        var existFacade = await facadeRepository.FacadeExistsAsync(facadeId);
+        var existFacade = await productRepository.ExistsAsync(productId);
         if (!existFacade) return null;
 
-        var color = Color.Create(Guid.NewGuid(), name, pathToImage, facadeId);
+        var color = Color.Create(Guid.NewGuid(), name, pathToImage, productId);
         await colorRepository.CreateAsync(color);
         
         return color;
