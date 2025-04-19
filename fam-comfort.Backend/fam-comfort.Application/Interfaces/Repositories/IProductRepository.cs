@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using fam_comfort.Core.Models;
 
 namespace fam_comfort.Application.Interfaces.Repositories;
@@ -5,6 +6,8 @@ namespace fam_comfort.Application.Interfaces.Repositories;
 public interface IProductRepository
 {
     Task<List<Product>?> GetAllAsync(Guid categoryId);
+    Task<List<Product>?> GetAsync(Expression<Func<Product, bool>>? filter = null, Func<IQueryable<Product>,
+            IOrderedQueryable<Product>>? orderBy = null, string includeProperties = "");
     Task<Product> CreateAsync(Product product);
     Task<Product?> GetByIdAsync(Guid productId);
     Task<Product?> GetByColorAsync(Guid colorId);
