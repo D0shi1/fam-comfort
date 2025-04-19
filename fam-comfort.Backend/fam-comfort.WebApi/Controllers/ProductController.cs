@@ -55,7 +55,7 @@ public class ProductController : ControllerBase
 
         return Ok(product.ToDto());
     }
-
+    
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] ProductRequest request)
     {

@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using fam_comfort.Application.Interfaces.Repositories;
 using fam_comfort.Core.Models;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,29 @@ public class ProductRepository : IProductRepository
     public async Task<List<Product>?> GetAllAsync(Guid categoryId)
     {
         return await _context.Products.Include(c => c.Colors).Where(p => p.CategoryId == categoryId).ToListAsync();
+    }
+
+    public async Task<List<Product>?> GetAsync(
+        Expression<Func<Product, bool>>? filter = null,
+        Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy = null,
+        string includeProperties = "")
+    {
+        IQueryable<Product> query = _context.Products;
+
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
+        query = includeProperties.Split([','], StringSplitOptions.RemoveEmptyEntries).Aggregate(query,
+            (current, includeProperty) => current.Include(includeProperty));
+
+        if (orderBy != null)
+        {
+            return await orderBy(query).ToListAsync();
+        }
+        
+        return await query.ToListAsync();
     }
 
     public async Task<Product> CreateAsync(Product product)
