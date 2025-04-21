@@ -1,4 +1,11 @@
 import React from "react";
+import ProductList from "../components/Catalog/ProductList"; 
+
+const mockProducts = [
+  { id: 1, name: "Декор 1", imageUrl: "https://via.placeholder.com/150" },
+  { id: 2, name: "Декор 2", imageUrl: "https://via.placeholder.com/150" },
+  { id: 3, name: "Декор 3", imageUrl: "https://via.placeholder.com/150" },
+];
 
 export function Decor() {
   return (
@@ -8,7 +15,9 @@ export function Decor() {
           Декоры
         </h1>
       </header>
-      <main className="container mx-auto px-6 py-10"></main>
+      <main className="container mx-auto px-6 py-10">
+        <ProductList products={mockProducts} />
+      </main>
     </div>
   );
 }

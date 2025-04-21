@@ -6,7 +6,7 @@ export const Header = ({ className = "" }) => {
   const NAV_ITEMS = [
     { path: "/", label: "Главная" },
     { path: "/catalog", label: "Каталог" },
-    { path: "/about", label: "Где купить" },
+    { path: "/where-to-buy", label: "Где купить" },
     { path: "/clients", label: "Клиентам" },
     { path: "/about", label: "О компании" },
     { path: "/contacts", label: "Контакты" },

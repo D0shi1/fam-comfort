@@ -7,6 +7,8 @@ import { Clients } from "./pages/ClientsPage";
 import { Catalog } from "./pages/CatalogPage";
 import { Facades } from "./pages/FacadesPage";
 import { Decor } from "./pages/DecorPage";
+import ProductPage from "./pages/ProductPage";
+import { WhereToBuyPage } from "./pages/WhereToBuyPage";
 
 export default function App() {
   return (
@@ -20,6 +22,11 @@ export default function App() {
           <Route path="catalog" element={<Catalog />} />
           <Route path="catalog/facades" element={<Facades />} />
           <Route path="catalog/decor" element={<Decor />} />
+          <Route
+            path="catalog/facades/:productName"
+            element={<ProductPage />}
+          />
+          <Route path="where-to-buy" element={<WhereToBuyPage />} />
         </Route>
       </Routes>
     </Router>
