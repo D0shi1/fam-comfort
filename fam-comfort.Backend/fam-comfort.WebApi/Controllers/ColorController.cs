@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fam_comfort.WebApi.Controllers;
+
 [Route("api/v1/colors")]
 [ApiController]
 public class ColorController(ColorService colorService) : ControllerBase
@@ -16,18 +17,17 @@ public class ColorController(ColorService colorService) : ControllerBase
         if (colors is null) return NotFound();
         return Ok(colors);
     }
-    
-    [Authorize]
+
     [Route("add")]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ColorRequest request)
     {
-       var color = await colorService.CreateAsync(request.FacadeId, request.Name, request.PathToImage);
-       if(color is null) return NotFound();
-       
-       return Created();
+        var color = await colorService.CreateAsync(request.FacadeId, request.Name, request.PathToImage);
+        if (color is null) return NotFound();
+
+        return Created();
     }
-    
+
     [HttpGet("get-by-id/{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {

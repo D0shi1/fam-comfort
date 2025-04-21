@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace fam_comfort.Persistence.Configurations;
 
-public class ColorConfiguration : IEntityTypeConfiguration<Color>
+public class CatalogConfiguration : IEntityTypeConfiguration<Catalog>
 {
-    public void Configure(EntityTypeBuilder<Color> builder)
+    public void Configure(EntityTypeBuilder<Catalog> builder)
     {
-        builder.ToTable("Colors");
+        builder.ToTable("Catalog");
         
         builder.HasKey(x => x.Id);
         
@@ -16,16 +16,15 @@ public class ColorConfiguration : IEntityTypeConfiguration<Color>
             .IsRequired();
         
         builder.Property(x => x.Name)
-            .HasColumnType("varchar(256)")
+            .HasColumnType("nvarchar(256)")
             .IsRequired();
         
         builder.Property(x => x.PathToImage)
             .HasColumnType("varchar(2048)")
-            .HasDefaultValue("images/template_image_facade.png")
+            .HasDefaultValue("images/template_image_facade_category.png")
             .IsRequired();
-        
-        builder.HasOne(x => x.Product)
-            .WithMany(x => x.Colors)
-            .HasForeignKey(x => x.ProductId);
+
+        builder.HasMany(x => x.Categories)
+            .WithOne(x => x.Catalog);
     }
 }
