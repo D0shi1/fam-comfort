@@ -12,11 +12,13 @@ public class ProductController : ControllerBase
 {
     private readonly ProductService _productService;
     private readonly ColorService _colorService;
+    private readonly TagService _tagService;
 
-    public ProductController(ProductService productService, ColorService colorService)
+    public ProductController(ProductService productService, ColorService colorService, TagService tagService)
     {
         _productService = productService;
         _colorService = colorService;
+        _tagService = tagService;
     }
 
     [HttpGet("{categoryId:guid}")]
@@ -64,13 +66,18 @@ public class ProductController : ControllerBase
         var product = await _productService.CreateAsync(request.CategoryId, request.Name,
             request.ShortName,
             request.Length, request.Width, request.Height, request.Description,
-            request.Materials, request.PathToImageSchema);
+            request.Materials, request.PathToImageSchema, request.TagId);
         if (product is null) return BadRequest();
 
         foreach (var createColorRequest in request.Colors)
         {
             await _colorService.CreateAsync(product.Id, createColorRequest.Name, createColorRequest.PathToImage);
         }
+        
+        var tag = await _tagService.GetByIdAsync(product.TagId ?? Guid.Empty);
+        
+        if (tag is not null) await _tagService.UpdateAsync(tag.Id, tag.Name, tag.ProductIds.Append(product.Id)
+            .ToList());
 
         return Created();
     }

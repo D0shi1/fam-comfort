@@ -20,9 +20,9 @@ public class TagService(ITagRepository tagRepository, IProductRepository product
         return await tagRepository.GetByNameAsync(name);
     }
 
-    public async Task<Tag?> UpdateAsync(Guid id, string name)
+    public async Task<Tag?> UpdateAsync(Guid id, string name, List<Guid> productIds)
     {
-        return await tagRepository.UpdateAsync(id, name);
+        return await tagRepository.UpdateAsync(id, name, productIds);
     }
 
     public async Task<Tag?> DeleteAsync(Guid id)
@@ -30,9 +30,9 @@ public class TagService(ITagRepository tagRepository, IProductRepository product
         return await tagRepository.DeleteAsync(id);
     }
 
-    public async Task<Tag?> CreateAsync(string name)
+    public async Task<Tag?> CreateAsync(string name, List<Guid> productIds)
     {
-        var tag = Tag.Create(Guid.NewGuid(), name);
+        var tag = Tag.Create(Guid.NewGuid(), name, productIds);
         return await tagRepository.CreateAsync(tag);
     }
 }

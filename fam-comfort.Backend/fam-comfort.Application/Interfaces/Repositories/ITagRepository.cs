@@ -8,7 +8,7 @@ public interface ITagRepository
     Task<Tag> CreateAsync(Tag tag);
     Task<Tag?> GetByIdAsync(Guid tagId);
     Task<Tag?> GetByNameAsync(string tagName);
-    Task<Tag?> UpdateAsync(Guid tagId, string name);
+    Task<Tag?> UpdateAsync(Guid tagId, string name, List<Guid> productIds);
     Task<Tag?> DeleteAsync(Guid tagId);
     Task<bool> TagExistsAsync(Guid tagId);
 }

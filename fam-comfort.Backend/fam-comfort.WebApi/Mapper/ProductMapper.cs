@@ -18,7 +18,7 @@ public static class ProductMapper
             Materials = product.Materials,
             Name = product.Name,
             ShortName = product.ShortName,
-            PathToImageSchema = product.PathToImageSchema,
+            PathToImageSchema = product.PathToImageSchema
         };
     }
 }

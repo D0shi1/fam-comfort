@@ -19,7 +19,7 @@ public class TagConfiguration : IEntityTypeConfiguration<Tag>
             .HasColumnType("varchar(32)")
             .IsRequired();
 
-        // builder.HasMany(x => x.Products)
-            // .WithOne(x => x.Tag);
+        builder.HasMany(x => x.Products)
+            .WithOne(x => x.Tag);
     }
 }

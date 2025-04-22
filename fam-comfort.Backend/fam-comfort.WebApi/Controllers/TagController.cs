@@ -1,5 +1,5 @@
+using fam_comfort.Application.Contract.ViewModels;
 using fam_comfort.Application.Services;
-using fam_comfort.Application.ViewModels;
 using fam_comfort.Core.Models;
 using fam_comfort.WebApi.Mapper;
 using Microsoft.AspNetCore.Authorization;
@@ -45,7 +45,7 @@ public class TagController(TagService tagService) : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] TagRequest request)
     {
-        var tag = await tagService.CreateAsync(request.Name);
+        var tag = await tagService.CreateAsync(request.Name, request.ProductIds);
         
         if(tag is null)
             return NotFound();
@@ -57,7 +57,7 @@ public class TagController(TagService tagService) : ControllerBase
     [HttpPut("update/{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] TagRequest request)
     {
-        var tag = await tagService.UpdateAsync(id, request.Name);
+        var tag = await tagService.UpdateAsync(id, request.Name, request.ProductIds);
         
         if(tag is null)
             return NotFound();

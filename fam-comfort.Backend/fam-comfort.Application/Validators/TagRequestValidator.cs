@@ -1,4 +1,4 @@
-using fam_comfort.Application.ViewModels;
+using fam_comfort.Application.Contract.ViewModels;
 using fam_comfort.Core.Models;
 using FluentValidation;
 

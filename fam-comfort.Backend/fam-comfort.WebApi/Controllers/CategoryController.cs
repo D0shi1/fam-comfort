@@ -34,13 +34,13 @@ public class CategoryController : ControllerBase
         
         if(category == null) return NotFound();
         
-        return Ok(category.Select(c => c.ToDto()));
+        return Ok(category.Select(x => x.ToDto()));
     }
     
-    [HttpGet("{catalogId:guid}")]
-    public async Task<IActionResult> GetAll(Guid catalogId)
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetAll(Guid id)
     {
-        var category = await _categoryService.GetAllAsync(catalogId);
+        var category = await _categoryService.GetAllAsync(id);
         return Ok(category.Select(s => s.ToDto()));
     }
 

@@ -9,12 +9,19 @@ namespace fam_comfort.WebApi.Controllers;
 
 [Route("api/v1/catalog")]
 [ApiController]
-public class CatalogController(CatalogService catalogService) : ControllerBase
+public class CatalogController : ControllerBase
 {
+    private readonly CatalogService _catalogService;
+
+    public CatalogController(CatalogService catalogService)
+    {
+        _catalogService = catalogService;
+    }
+    
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        var catalog = await catalogService.GetByIdAsync(id);
+        var catalog = await _catalogService.GetByIdAsync(id);
         
         if(catalog == null) return NotFound();
         
@@ -24,7 +31,7 @@ public class CatalogController(CatalogService catalogService) : ControllerBase
     [HttpGet("{name}")]
     public async Task<IActionResult> GetByName(string name)
     {
-        var catalog = await catalogService.GetByNameAsync(name);
+        var catalog = await _catalogService.GetByNameAsync(name);
         
         if(catalog == null) return NotFound();
         
@@ -34,21 +41,21 @@ public class CatalogController(CatalogService catalogService) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery]QueryObject query)
     {
-        var catalog = await catalogService.GetAllAsync(query);
+        var catalog = await _catalogService.GetAllAsync(query);
         return Ok(catalog.Select(s => s.ToDto()));
     }
 
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] CatalogRequest request)
     {
-        await catalogService.CreateAsync(request.Name, request.PathToImage);
+        await _catalogService.CreateAsync(request.Name, request.PathToImage);
         return Created();
     }
     
     [HttpPut("update/{id:guid}")]
     public async Task<IActionResult> Update([FromBody] CatalogRequest request, Guid id)
     {
-        var result = await catalogService.UpdateAsync(id, request.Name, request.PathToImage);
+        var result = await _catalogService.UpdateAsync(id, request.Name, request.PathToImage);
         if(result == null) return NotFound();
         
         return Ok();
@@ -57,7 +64,7 @@ public class CatalogController(CatalogService catalogService) : ControllerBase
     [HttpDelete("delete/{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        var result = await catalogService.DeleteAsync(id);
+        var result = await _catalogService.DeleteAsync(id);
         if(result == null) return NotFound();
 
         return Ok();

@@ -14,4 +14,5 @@ public class ProductRequest
     public string Materials { get; set; } = string.Empty;
     public string PathToImageSchema { get; set; } = string.Empty;
     public List<CreateColorRequest> Colors { get; set; } = [];
+    public Guid? TagId { get; set; } = null;
 }

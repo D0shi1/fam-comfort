@@ -29,7 +29,7 @@ public class TagRepository(FamComfortDbContext famComfortDbContext) : ITagReposi
         return await famComfortDbContext.Tags.FirstOrDefaultAsync(t => t.Name == tagName);
     }
 
-    public async Task<Tag?> UpdateAsync(Guid tagId, string name)
+    public async Task<Tag?> UpdateAsync(Guid tagId, string name, List<Guid> productIds)
     {
         var tag = await famComfortDbContext.Tags.FindAsync(tagId);
 
@@ -37,6 +37,7 @@ public class TagRepository(FamComfortDbContext famComfortDbContext) : ITagReposi
             return null;
         
         tag.Name = UpdateIfNotEmpty(name, tag.Name);
+        tag.ProductIds = productIds;
         
         await famComfortDbContext.SaveChangesAsync();
         

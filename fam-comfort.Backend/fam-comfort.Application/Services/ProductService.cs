@@ -52,14 +52,14 @@ public class ProductService
     }
 
     public async Task<Product?> CreateAsync(Guid categoryId, string name, string shortName, ushort length,
-        ushort width, ushort height, string description, string materials, string pathToImageSchema)
+        ushort width, ushort height, string description, string materials, string pathToImageSchema, Guid? tagId)
     {
         var sectionExist = await _categoryRepository.ExistsAsync(categoryId);
 
         if (!sectionExist) return null;
         
         var product = Product.Create(Guid.NewGuid(), name, shortName, length, width, height, description, materials,
-            pathToImageSchema, categoryId);
+            pathToImageSchema, categoryId, tagId);
         await _productRepository.CreateAsync(product);
         return product;
     }
