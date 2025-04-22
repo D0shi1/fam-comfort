@@ -1,3 +1,4 @@
+using fam_comfort.Application.Contract.ViewModels;
 using fam_comfort.Application.Interfaces.Repositories;
 using fam_comfort.Core.Models;
 
@@ -33,7 +34,7 @@ public class ProductService
         return await _productRepository.GetByColorAsync(colorId);
     }
     
-    public async Task<Product?> GetByNameAsync(string name)
+    public async Task<List<Product>?> GetByNameAsync(string name)
     {
         return await _productRepository.GetByNameAsync(name);
     }
@@ -56,11 +57,9 @@ public class ProductService
         var sectionExist = await _categoryRepository.ExistsAsync(categoryId);
 
         if (!sectionExist) return null;
-
-
+        
         var product = Product.Create(Guid.NewGuid(), name, shortName, length, width, height, description, materials,
             pathToImageSchema, categoryId);
-        
         await _productRepository.CreateAsync(product);
         return product;
     }

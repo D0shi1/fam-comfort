@@ -1,6 +1,6 @@
 using System.Net;
+using fam_comfort.Application.Contract.ViewModels;
 using fam_comfort.Application.Services;
-using fam_comfort.Application.ViewModels;
 using fam_comfort.WebApi.Mapper;
 using Microsoft.AspNetCore.Mvc;
 

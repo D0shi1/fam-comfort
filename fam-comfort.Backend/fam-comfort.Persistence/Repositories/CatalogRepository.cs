@@ -37,12 +37,12 @@ public class CatalogRepository : ICatalogRepository
 
     public async Task<Catalog?> GetByIdAsync(Guid catalogId)
     {
-        return await _context.Catalogs.FirstOrDefaultAsync(c => c.Id == catalogId);
+        return await _context.Catalogs.Include(c => c.Categories).ThenInclude(c => c).FirstOrDefaultAsync(c => c.Id == catalogId);
     }
 
     public async Task<Catalog?> GetByNameAsync(string name)
     {
-        return await _context.Catalogs.FirstOrDefaultAsync(c => c.Name == name);
+        return await _context.Catalogs.Include(c => c.Categories).FirstOrDefaultAsync(c => c.Name == name);
     }
 
     public async Task<Catalog> CreateAsync(Catalog catalog)

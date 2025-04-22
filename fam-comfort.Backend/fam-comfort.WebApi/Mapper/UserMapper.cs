@@ -1,5 +1,5 @@
+using fam_comfort.Application.Contract.Dto;
 using fam_comfort.Core.Models;
-using fam_comfort.WebApi.Contract;
 
 namespace fam_comfort.WebApi.Mapper;
 

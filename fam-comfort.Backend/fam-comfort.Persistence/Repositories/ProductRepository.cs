@@ -38,9 +38,9 @@ public class ProductRepository : IProductRepository
         return color?.Product;
     }
 
-    public async Task<Product?> GetByNameAsync(string name)
+    public async Task<List<Product>?> GetByNameAsync(string name)
     {
-        return await _context.Products.Include(c => c.Colors).FirstOrDefaultAsync(c => c.Name == name);
+        return await _context.Products.Include(c => c.Colors).Where(c => c.Category.Name.ToLower().StartsWith(name.ToLower())).ToListAsync();
     }
 
     public async Task<Product?> UpdateAsync(Guid productId, string name, string shortName, ushort length, ushort width,

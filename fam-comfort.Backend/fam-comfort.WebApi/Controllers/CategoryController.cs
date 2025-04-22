@@ -1,6 +1,6 @@
+using fam_comfort.Application.Contract.ViewModels;
 using fam_comfort.Application.Helpers;
 using fam_comfort.Application.Services;
-using fam_comfort.Application.ViewModels;
 using fam_comfort.WebApi.Mapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,13 +34,13 @@ public class CategoryController : ControllerBase
         
         if(category == null) return NotFound();
         
-        return Ok(category.ToDto());
+        return Ok(category.Select(c => c.ToDto()));
     }
     
     [HttpGet("{catalogId:guid}")]
-    public async Task<IActionResult> GetAll(Guid id)
+    public async Task<IActionResult> GetAll(Guid catalogId)
     {
-        var category = await _categoryService.GetAllAsync(id);
+        var category = await _categoryService.GetAllAsync(catalogId);
         return Ok(category.Select(s => s.ToDto()));
     }
 

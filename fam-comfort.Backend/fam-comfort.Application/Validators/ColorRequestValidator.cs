@@ -1,4 +1,4 @@
-using fam_comfort.Application.ViewModels;
+using fam_comfort.Application.Contract.ViewModels;
 using FluentValidation;
 
 namespace fam_comfort.Application.Validators;
@@ -7,7 +7,7 @@ public class ColorRequestValidator : AbstractValidator<ColorRequest>
 {
     public ColorRequestValidator()
     {
-        RuleFor(c => c.FacadeId)
+        RuleFor(c => c.ProductId)
             .NotEmpty().WithMessage("Please specify a valid id.")
             .NotNull().WithMessage("Please specify a valid id.");
         

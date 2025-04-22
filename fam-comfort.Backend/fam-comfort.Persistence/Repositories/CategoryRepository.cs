@@ -23,9 +23,10 @@ public class CategoryRepository : ICategoryRepository
         return await _context.Categories.FirstOrDefaultAsync(c => c.Id == catalogId);
     }
 
-    public async Task<Category?> GetByNameAsync(string name)
+    public async Task<List<Category>?> GetByNameAsync(string name)
     {
-        return await _context.Categories.FirstOrDefaultAsync(c => c.Name == name);
+        var catalog = await _context.Catalogs.Include(catalog => catalog.Categories).FirstOrDefaultAsync(c => c.Name == name);
+        return catalog?.Categories;
     }
 
     public async Task<Category> CreateAsync(Category catalog)

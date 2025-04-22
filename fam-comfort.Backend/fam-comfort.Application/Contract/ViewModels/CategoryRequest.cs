@@ -1,4 +1,4 @@
-namespace fam_comfort.Application.ViewModels;
+namespace fam_comfort.Application.Contract.ViewModels;
 
 public class CategoryRequest
 {
