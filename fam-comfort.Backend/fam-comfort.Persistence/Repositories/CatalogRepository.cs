@@ -37,7 +37,7 @@ public class CatalogRepository : ICatalogRepository
 
     public async Task<Catalog?> GetByIdAsync(Guid catalogId)
     {
-        return await _context.Catalogs.Include(c => c.Categories).ThenInclude(c => c).FirstOrDefaultAsync(c => c.Id == catalogId);
+        return await _context.Catalogs.Include(c => c.Categories).ThenInclude(c => c.Products).FirstOrDefaultAsync(c => c.Id == catalogId);
     }
 
     public async Task<Catalog?> GetByNameAsync(string name)
