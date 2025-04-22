@@ -2,7 +2,7 @@ namespace fam_comfort.Core.Models;
 
 public class Product
 {
-    private Product(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
+    private Product(Guid id, string name,  string shortName, ushort length, ushort width, ushort height,
         string description, string materials, string pathToImageSchema, Guid categoryId)
     {
         Id = id;
@@ -37,7 +37,6 @@ public class Product
     public static Product Create(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
         string description, string materials, string pathToImageSchema, Guid categoryId)
     {
-        return new Product(id, name, shortName, length, width, height, description, materials, pathToImageSchema,
-            categoryId);
+        return new Product(id, name, shortName, length, width, height, description, materials, pathToImageSchema,categoryId);
     }
 }

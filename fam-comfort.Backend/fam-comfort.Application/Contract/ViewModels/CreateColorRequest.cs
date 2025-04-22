@@ -1,10 +1,7 @@
-namespace fam_comfort.WebApi.Contract;
+namespace fam_comfort.Application.Contract.ViewModels;
 
-public class CategoryDto
+public class CreateColorRequest
 {
-    public Guid CategoryId { get; set; }
-    
     public string Name { get; set; } = string.Empty;
-    
     public string PathToImage { get; set; } = string.Empty;
 }

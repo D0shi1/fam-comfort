@@ -1,8 +1,8 @@
-namespace fam_comfort.Application.ViewModels;
+namespace fam_comfort.Application.Contract.ViewModels;
 
-public class ColorRequest
+public class CatalogRequest
 {
-    public Guid FacadeId { get; set; }
     public string Name { get; set; } = string.Empty;
+    
     public string PathToImage { get; set; } = string.Empty;
 }

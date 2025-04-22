@@ -1,4 +1,4 @@
-using fam_comfort.Application.ViewModels;
+using fam_comfort.Application.Contract.ViewModels;
 using FluentValidation;
 
 namespace fam_comfort.Application.Validators;

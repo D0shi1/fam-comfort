@@ -1,4 +1,4 @@
-namespace fam_comfort.WebApi.Contract;
+namespace fam_comfort.Application.Contract.Dto;
 
 public class UserDto
 {

@@ -22,7 +22,7 @@ public class CategoryService
         return await _repository.GetByIdAsync(id);
     }
 
-    public async Task<Category?> GetByNameAsync(string name)
+    public async Task<List<Category>?> GetByNameAsync(string name)
     {
         return await _repository.GetByNameAsync(name);
     }

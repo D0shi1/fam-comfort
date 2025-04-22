@@ -1,5 +1,5 @@
+using fam_comfort.Application.Contract.ViewModels;
 using fam_comfort.Application.Services;
-using fam_comfort.Application.ViewModels;
 using fam_comfort.WebApi.Mapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +22,7 @@ public class ColorController(ColorService colorService) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ColorRequest request)
     {
-        var color = await colorService.CreateAsync(request.FacadeId, request.Name, request.PathToImage);
+        var color = await colorService.CreateAsync(request.ProductId, request.Name, request.PathToImage);
         if (color is null) return NotFound();
 
         return Created();

@@ -1,5 +1,5 @@
+using fam_comfort.Application.Contract.ViewModels;
 using fam_comfort.Application.Services;
-using fam_comfort.Application.ViewModels;
 using fam_comfort.WebApi.Mapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +11,14 @@ namespace fam_comfort.WebApi.Controllers;
 public class ProductController : ControllerBase
 {
     private readonly ProductService _productService;
+    private readonly ColorService _colorService;
 
-    public ProductController(ProductService productService)
+    public ProductController(ProductService productService, ColorService colorService)
     {
         _productService = productService;
+        _colorService = colorService;
     }
-    
+
     [HttpGet("{categoryId:guid}")]
     public async Task<IActionResult> GetAll(Guid categoryId)
     {
@@ -35,7 +37,7 @@ public class ProductController : ControllerBase
 
         return Ok(product.ToDto());
     }
-    
+
     [HttpGet("get-by-color/{colorId:guid}")]
     public async Task<IActionResult> GetByColor(Guid id)
     {
@@ -45,7 +47,7 @@ public class ProductController : ControllerBase
 
         return Ok(product.ToDto());
     }
-    
+
     [HttpGet("{name}")]
     public async Task<IActionResult> GetByName(string name)
     {
@@ -53,17 +55,22 @@ public class ProductController : ControllerBase
 
         if (product == null) return NotFound();
 
-        return Ok(product.ToDto());
+        return Ok(product.Select(p => p.ToDto()));
     }
 
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] ProductRequest request)
     {
-        var product = await _productService.CreateAsync(request.CategoryId, request.Name, request.ShortName,
+        var product = await _productService.CreateAsync(request.CategoryId, request.Name,
+            request.ShortName,
             request.Length, request.Width, request.Height, request.Description,
             request.Materials, request.PathToImageSchema);
-        
         if (product is null) return BadRequest();
+
+        foreach (var createColorRequest in request.Colors)
+        {
+            await _colorService.CreateAsync(product.Id, createColorRequest.Name, createColorRequest.PathToImage);
+        }
 
         return Created();
     }

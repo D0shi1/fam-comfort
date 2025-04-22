@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace fam_comfort.Application.ViewModels;
+namespace fam_comfort.Application.Contract.ViewModels;
 
 public record UserRequest(
     [Required] string Username,
