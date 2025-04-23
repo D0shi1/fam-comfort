@@ -62,6 +62,15 @@ public class ProductRepository : IProductRepository
         return color?.Product;
     }
 
+    public async Task<List<Product>?> GetByTagAsync(Guid tagId)
+    {
+        var tag = await _context.Tags
+            .Include(t => t.Products)
+            .FirstOrDefaultAsync(t => t.Id == tagId);
+
+        return tag?.Products?.ToList();
+    }
+
     public async Task<List<Product>?> GetByNameAsync(string name)
     {
         return await _context.Products.Include(c => c.Colors).Where(c => c.Category.Name.ToLower().StartsWith(name.ToLower())).ToListAsync();

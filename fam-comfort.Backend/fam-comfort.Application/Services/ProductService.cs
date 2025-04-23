@@ -33,6 +33,11 @@ public class ProductService
     {
         return await _productRepository.GetByColorAsync(colorId);
     }
+
+    public async Task<List<Product>?> GetByTagAsync(Guid tagId)
+    {
+        return await _productRepository.GetByTagAsync(tagId);
+    }
     
     public async Task<List<Product>?> GetByNameAsync(string name)
     {

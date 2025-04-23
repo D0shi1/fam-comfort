@@ -41,13 +41,23 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("get-by-color/{colorId:guid}")]
-    public async Task<IActionResult> GetByColor(Guid id)
+    public async Task<IActionResult> GetByColor(Guid colorId)
     {
-        var product = await _productService.GetByColorAsync(id);
+        var product = await _productService.GetByColorAsync(colorId);
 
         if (product == null) return NotFound();
 
         return Ok(product.ToDto());
+    }
+    
+    [HttpGet("get-by-tag/{tagId:guid}")]
+    public async Task<IActionResult> GetByTag(Guid tagId)
+    {
+        var products = await _productService.GetByTagAsync(tagId);
+
+        if (products == null) return NotFound();
+
+        return Ok(products.Select(p => p.ToDto()));
     }
 
     [HttpGet("{name}")]

@@ -11,6 +11,7 @@ public interface IProductRepository
     Task<Product> CreateAsync(Product product);
     Task<Product?> GetByIdAsync(Guid productId);
     Task<Product?> GetByColorAsync(Guid colorId);
+    Task<List<Product>?> GetByTagAsync(Guid tagId);
     Task<List<Product>?> GetByNameAsync(string name);
 
     Task<Product?> UpdateAsync(Guid productId, string name, string shortName, ushort length,
