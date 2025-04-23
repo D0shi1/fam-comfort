@@ -12,6 +12,7 @@ public class FamComfortDbContext(DbContextOptions<FamComfortDbContext> options) 
     public DbSet<Color> Colors { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Tag> Tags { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -21,6 +22,7 @@ public class FamComfortDbContext(DbContextOptions<FamComfortDbContext> options) 
         modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         modelBuilder.ApplyConfiguration(new ProductConfiguration());
         modelBuilder.ApplyConfiguration(new TagConfiguration());
+        modelBuilder.ApplyConfiguration(new ContactConfiguration());
 
         base.OnModelCreating(modelBuilder);
     }
