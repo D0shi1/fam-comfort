@@ -40,10 +40,10 @@ public class ProductService
     }
 
     public async Task<Product?> UpdateAsync(Guid productId, string name, string shortName, ushort length,
-        ushort width, ushort height, string description, string materials, string pathToImageSchema)
+        ushort width, ushort height, string description, string materials, string pathToImageSchema, Guid? tagId)
     {
         return await _productRepository.UpdateAsync(productId, name, shortName, length, width, height, description,
-            materials, pathToImageSchema);
+            materials, pathToImageSchema, tagId);
     }
 
     public async Task<Product?> DeleteAsync(Guid id)

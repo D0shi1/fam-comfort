@@ -14,7 +14,7 @@ public interface IProductRepository
     Task<List<Product>?> GetByNameAsync(string name);
 
     Task<Product?> UpdateAsync(Guid productId, string name, string shortName, ushort length,
-        ushort width, ushort height, string description, string materials, string pathToImageSchema);
+        ushort width, ushort height, string description, string materials, string pathToImageSchema, Guid? tagId);
 
     Task<Product?> DeleteAsync(Guid productId);
     Task<bool> ExistsAsync(Guid productId);

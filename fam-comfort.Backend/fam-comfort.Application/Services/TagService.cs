@@ -20,6 +20,21 @@ public class TagService(ITagRepository tagRepository, IProductRepository product
         return await tagRepository.GetByNameAsync(name);
     }
 
+    public async Task AddTagToProductsAsync(Guid tagId, List<Guid> productIds)
+    {
+        foreach (var productId in productIds)
+        {
+            var product = await productRepository.GetByIdAsync(productId);
+
+            if (product == null) continue;
+            product.TagId = tagId;
+                
+            await productRepository.UpdateAsync(product.Id, product.Name, product.ShortName, product.Length,
+                product.Width, product.Height, product.Description, product.Materials, product.PathToImageSchema,
+                product.TagId);
+        }
+    }
+
     public async Task<Tag?> UpdateAsync(Guid id, string name, List<Guid> productIds)
     {
         return await tagRepository.UpdateAsync(id, name, productIds);

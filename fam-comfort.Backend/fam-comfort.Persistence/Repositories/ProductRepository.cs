@@ -69,7 +69,7 @@ public class ProductRepository : IProductRepository
 
     public async Task<Product?> UpdateAsync(Guid productId, string name, string shortName, ushort length, ushort width,
         ushort height,
-        string description, string materials, string pathToImageSchema)
+        string description, string materials, string pathToImageSchema, Guid? tagId)
     {
         var product = await GetByIdAsync(productId);
         
@@ -83,6 +83,7 @@ public class ProductRepository : IProductRepository
         product.Description = UpdateIfNotEmpty(description, product.Description);
         product.Materials = UpdateIfNotEmpty(name, product.Name);
         product.PathToImageSchema = UpdateIfNotEmpty(name, product.Name);
+        product.TagId = tagId;
         
         await _context.SaveChangesAsync();
         return product;

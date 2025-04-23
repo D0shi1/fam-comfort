@@ -87,7 +87,8 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> Update([FromBody] ProductRequest request, Guid id)
     {
         var result = await _productService.UpdateAsync(id, request.Name, request.ShortName, request.Length,
-            request.Width, request.Height, request.Description, request.Materials, request.PathToImageSchema);
+            request.Width, request.Height, request.Description, request.Materials, request.PathToImageSchema,
+            request.TagId);
         if (result == null) return NotFound();
 
         return Ok();

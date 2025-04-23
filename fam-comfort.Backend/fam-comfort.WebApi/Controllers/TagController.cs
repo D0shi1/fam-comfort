@@ -18,7 +18,7 @@ public class TagController(TagService tagService) : ControllerBase
         
         if(tags is null) return NotFound();
         
-        return Ok();
+        return Ok(tags.Select(t => t.ToDto()));
     }
 
     [HttpGet("get-by-id/{id:guid}")]
@@ -63,6 +63,15 @@ public class TagController(TagService tagService) : ControllerBase
             return NotFound();
         
         return Ok(tag.ToDto());
+    }
+
+    [Authorize]
+    [HttpPut("add-to-products/{id:guid}")]
+    public async Task<IActionResult> AddTagToProducts(Guid id, [FromBody] TagRequest request)
+    {
+        await tagService.AddTagToProductsAsync(id, request.ProductIds);
+        
+        return Ok();
     }
 
     [Authorize]
