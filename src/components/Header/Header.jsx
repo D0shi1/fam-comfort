@@ -6,7 +6,7 @@ export const Header = ({ className = "" }) => {
   const NAV_ITEMS = [
     { path: "/", label: "Главная" },
     { path: "/catalog", label: "Каталог" },
-    { path: "/where-to-buy", label: "Где купить" },
+    // { path: "/where-to-buy", label: "Где купить" },
     { path: "/clients", label: "Клиентам" },
     { path: "/about", label: "О компании" },
     { path: "/contacts", label: "Контакты" },
@@ -70,10 +70,10 @@ export const Header = ({ className = "" }) => {
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                 />
               </svg>
-              +7 (800) 123-45-67
+              +375 (29) 103-33-35
             </a>
 
-            <button
+            {/* <button
               className="text-[#D7B56D] text-s font-medium transition-colors 
                       duration-300 whitespace-nowrap transform hover:scale-105 
                       after:content-[''] after:absolute after:bottom-0 after:left-1/2 
@@ -82,7 +82,7 @@ export const Header = ({ className = "" }) => {
                       hover:after:w-full hover:after:left-0"
             >
               Заказать звонок
-            </button>
+            </button> */}
           </div>
 
           <button className="md:hidden text-white focus:outline-none">

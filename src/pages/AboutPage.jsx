@@ -11,28 +11,28 @@ export function AboutPage() {
           <div className="flex flex-col md:flex-row items-center md:space-x-6">
             <div className="md:w-1/2 text-center md:text-left mb-6 md:mb-0">
               <p className="text-lg mt-2 text-gray-700">
-                “ОМЦ-Профиль” — это <b>... лет успешной работы</b> в сфере
-                производства мебельных комплектующих, построенные на{" "}
-                <b>доверии</b> и <b>профессионализме</b>. Мы создаём не просто
-                продукцию, а воплощаем <b>эстетические решения</b>.
+                <h2 className="text-xl font-bold text-red-600">Fam-comfort</h2>
+                <p className="mt-2 text-gray-700">
+                  <strong>Уютное</strong> дополнение{" "}
+                  <strong>современного интерьера</strong>.
+                </p>
+                <p className="mt-4">
+                  Мы взяли <strong>20 лет опыта</strong>, добавили{" "}
+                  <strong>современные технологии</strong> и создали бренд,
+                  который вам понравится.
+                </p>
+                ✔️ Все преимущества <strong>проверенного производителя</strong>{" "}
+                – без устаревших решений <br />
+                ✔️ <strong>Технологии</strong>, которые действительно работают –{" "}
+                <strong>5D-окутка</strong>,{" "}
+                <strong>трёхслойное покрытие</strong>,{" "}
+                <strong>влагостойкие материалы</strong>
                 <br />
-                Наши производственные мощности впечатляют — <b>4700 м²</b>, где
-                рождаются:
-                <br />- Погонажный профиль с <b>идеальной геометрией</b>,
-                <br />- Декоративные элементы, украшающие <b>любую мебель</b>,
-                <br />- Рамочные фасады из МДФ и <b>корпусная мебель</b>.
+                ✔️ <strong>Не просто фасады</strong> – а продуманные до мелочей{" "}
+                <strong>интерьерные решения</strong>
                 <br />
-                За годы работы мы <b>завоевали доверие</b> партнёров в <br />Беларуси,
-                <br />России, <br />Украине, <br />Латвии, <br />Казахстане и Азербайджане.
-                <br />
-                Мы <b>экспериментируем с формами</b>, материалами и цветами,
-                чтобы радовать вас <b>актуальным ассортиментом</b>.
-                <br />
-                Наши изделия создаются на{" "}
-                <b>высокотехнологичном оборудовании</b>, которое обеспечивает{" "}
-                <b>идеальный результат</b>.
-                Присоединяйтесь к миру <b>надёжности</b> и изящества от
-                "ОМЦ-Профиль”!
+                ✔️ <strong>Гибкость</strong> – быстро адаптируемся под{" "}
+                <strong>ваши задачи</strong>
               </p>
             </div>
 
@@ -67,16 +67,16 @@ export function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div>
               <img
-                src="/src/img/test2.jpg"
+                src="/src/img/profil.jpg"
                 alt="Профиль погонажный"
                 className="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
               />
-              <p className="text-lg font-medium mt-4">Профиль погонажный</p>
+              <p className="text-lg font-medium mt-4">Рейки и реечные панели</p>
             </div>
 
             <div>
               <img
-                src="/src/img/test2.jpg"
+                src="/src/img/facades.jpg"
                 alt="Фасады"
                 className="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
               />
@@ -85,20 +85,20 @@ export function AboutPage() {
 
             <div>
               <img
-                src="/src/img/test2.jpg"
+                src="/src/img/decor.jpg"
                 alt="Декор"
                 className="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
               />
-              <p className="text-lg font-medium mt-4">Декор</p>
+              <p className="text-lg font-medium mt-4">Перегородки</p>
             </div>
 
             <div>
               <img
-                src="/src/img/test2.jpg"
+                src="/src/img/furniture.jpg"
                 alt="Мебель"
                 className="w-full h-48 object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform duration-300"
               />
-              <p className="text-lg font-medium mt-4">Мебель</p>
+              <p className="text-lg font-medium mt-4">Стеновые панели</p>
             </div>
           </div>
         </div>
@@ -108,15 +108,11 @@ export function AboutPage() {
         <div className="container mx-auto px-6 space-y-12">
           <div className="flex flex-col md:flex-row items-center md:space-x-6">
             <div className="md:w-3/4 text-center md:text-left">
-              <h3 className="text-xl font-bold mb-4">Профиль погонажный</h3>
+              <h3 className="text-xl font-bold mb-4">Рейки и реечные панели</h3>
               <p className="text-lg text-gray-700">
-                Это один из ключевых элементов нашего ассортимента.
-                Изготавливаемый из высококачественного МДФ, произведенного в
-                Беларуси, России и Польше, он выделяется исключительной
-                прочностью и эстетикой. Широкий выбор форм и дизайнов делает
-                этот профиль незаменимым материалом для создания неповторимой
-                мебели, который подойдет как для классических, так и современных
-                интерьеров.
+                Используйте рейки для декорирования мебели и стен. Реечные
+                панели - для использования на необработанных поверхностях, а
+                также создания акустических зон.
               </p>
             </div>
             <div className="md:w-1/4">
@@ -130,16 +126,18 @@ export function AboutPage() {
 
           <div className="flex flex-col md:flex-row-reverse items-center md:space-x-6">
             <div className="md:w-3/4 text-center md:text-left pl-5">
-              <h3 className="text-xl font-bold mb-4">
-                Фасады рамочные и лакированные
-              </h3>
+              <h3 className="text-xl font-bold mb-4">Фасады</h3>
               <p className="text-lg text-gray-700">
-                Наша гордость, представленная в более чем 30 коллекциях, каждая
-                из которых создаёт атмосферу утончённости и стиля. Эти фасады не
-                только украшают мебель, но и обеспечивают её долговечность и
-                функциональность. Благодаря разнообразию цветов, текстур и форм,
-                фасады идеально адаптируются к индивидуальному стилю и дизайну
-                помещения.
+                FAM-COMFORT предлагает современные коллекции окрашенных рамочных
+                фасадов в инновационной пленке. <br />
+                1. Профиль и вставка рамочного фасада производится из МДФ.
+                Вставка толщиной 8 мм придает фасаду дополнительную прочность.{" "}
+                <br />
+                2. 5D окутка рамочного профиля и двустороннее каширование
+                вставки. <br />
+                3. Эмаль наносится на собранный фасад в 3 этапа. <br />
+                4.Защитная пленка поможет избежать царапин при транспортировке и
+                установке.
               </p>
             </div>
             <div className="md:w-1/4">
@@ -153,14 +151,11 @@ export function AboutPage() {
 
           <div className="flex flex-col md:flex-row items-center md:space-x-6">
             <div className="md:w-3/4 text-center md:text-left">
-              <h3 className="text-xl font-bold mb-4">Декоративные элементы</h3>
+              <h3 className="text-xl font-bold mb-4">Перегородки</h3>
               <p className="text-lg text-gray-700">
-                Настоящие произведения искусства для оформления интерьера.
-                Пилястры, багеты, балюстрады и другие детали созданы с
-                тщательной проработкой каждой мелочи. Их утончённые линии и
-                высококачественные материалы добавляют интерьеру изысканности и
-                уникального характера. Мы стремимся сделать каждый ваш проект
-                неповторимым благодаря этим деталям.
+                Благодаря современному и минималистичному дизайну и натуральной
+                текстуре они привносят легкость и стильную атмосферу в ваш
+                интерьер.
               </p>
             </div>
             <div className="md:w-1/4">
@@ -174,14 +169,11 @@ export function AboutPage() {
 
           <div className="flex flex-col md:flex-row-reverse items-center md:space-x-6">
             <div className="md:w-3/4 text-center md:text-left pl-5">
-              <h3 className="text-xl font-bold mb-4">Корпусная мебель</h3>
+              <h3 className="text-xl font-bold mb-4">Стеновые панели</h3>
               <p className="text-lg text-gray-700">
-                С 2015 года мы начали производство готовой корпусной мебели,
-                которая стала настоящей находкой для тех, кто ценит стиль и
-                функциональность. Наши коллекции отражают последние тенденции
-                мебельного дизайна и идеально вписываются в современные
-                интерьеры, предоставляя возможность создать гармоничное
-                пространство, отвечающее всем требованиям комфорта и красоты.
+                Стеновые панели просты в монтаже Они позволяют легко подчеркнуть
+                индивидуальность вашего пространства с помощью различных форм и
+                цветовых решений.
               </p>
             </div>
             <div className="md:w-1/4">

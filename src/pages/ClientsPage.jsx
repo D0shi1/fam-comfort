@@ -82,7 +82,6 @@ export function Clients() {
         </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Категории</h2>
           <div className="flex flex-wrap gap-4">
             {Object.keys(documents).map((category) => (
               <button

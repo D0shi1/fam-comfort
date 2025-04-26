@@ -14,14 +14,11 @@ export function Contacts() {
           <p className="text-lg text-gray-700">
             <strong>E-mail:</strong>{" "}
             <a href="mailto:marketing@omcprofil.by" className="text-green-500">
-              marketing@omcprofil.by
+              marketing@fam-comfort.by
             </a>
           </p>
           <p className="text-lg text-gray-700">
-            <strong>Тел./факс:</strong> +375 (152) 60-81-63
-          </p>
-          <p className="text-lg text-gray-700">
-            <strong>Телефон:</strong> +375 (29) 103-33-04
+            <strong>Телефон:</strong> +375 (29) 103-33-35
           </p>
         </section>
 
@@ -32,11 +29,8 @@ export function Contacts() {
           <p className="text-lg text-gray-700">
             <strong>E-mail:</strong>{" "}
             <a href="mailto:sales@omcprofil.by" className="text-green-500">
-              sales@omcprofil.by
+              Почта: marketing@fam-comfort.by
             </a>
-          </p>
-          <p className="text-lg text-gray-700">
-            <strong>Тел./факс:</strong> +375 (152) 60-81-63
           </p>
           <div className="mt-6">
             <h3 className="text-xl font-bold text-gray-800">

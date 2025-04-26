@@ -66,3 +66,4 @@ refint/
 *.ntvs*
 *.njsproj
 *.sw?
+.vercel
