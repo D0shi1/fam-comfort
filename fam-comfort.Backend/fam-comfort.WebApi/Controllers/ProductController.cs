@@ -12,11 +12,13 @@ public class ProductController : ControllerBase
 {
     private readonly ProductService _productService;
     private readonly ColorService _colorService;
+    private readonly TagService _tagService;
 
-    public ProductController(ProductService productService, ColorService colorService)
+    public ProductController(ProductService productService, ColorService colorService, TagService tagService)
     {
         _productService = productService;
         _colorService = colorService;
+        _tagService = tagService;
     }
 
     [HttpGet("{categoryId:guid}")]
@@ -39,13 +41,23 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("get-by-color/{colorId:guid}")]
-    public async Task<IActionResult> GetByColor(Guid id)
+    public async Task<IActionResult> GetByColor(Guid colorId)
     {
-        var product = await _productService.GetByColorAsync(id);
+        var product = await _productService.GetByColorAsync(colorId);
 
         if (product == null) return NotFound();
 
         return Ok(product.ToDto());
+    }
+    
+    [HttpGet("get-by-tag/{tagId:guid}")]
+    public async Task<IActionResult> GetByTag(Guid tagId)
+    {
+        var products = await _productService.GetByTagAsync(tagId);
+
+        if (products == null) return NotFound();
+
+        return Ok(products.Select(p => p.ToDto()));
     }
 
     [HttpGet("{name}")]
@@ -57,20 +69,25 @@ public class ProductController : ControllerBase
 
         return Ok(product.Select(p => p.ToDto()));
     }
-
+    
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] ProductRequest request)
     {
         var product = await _productService.CreateAsync(request.CategoryId, request.Name,
             request.ShortName,
             request.Length, request.Width, request.Height, request.Description,
-            request.Materials, request.PathToImageSchema);
+            request.Materials, request.PathToImageSchema, request.TagId);
         if (product is null) return BadRequest();
 
         foreach (var createColorRequest in request.Colors)
         {
             await _colorService.CreateAsync(product.Id, createColorRequest.Name, createColorRequest.PathToImage);
         }
+        
+        var tag = await _tagService.GetByIdAsync(product.TagId ?? Guid.Empty);
+        
+        if (tag is not null) await _tagService.UpdateAsync(tag.Id, tag.Name, tag.ProductIds.Append(product.Id)
+            .ToList());
 
         return Created();
     }
@@ -80,7 +97,8 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> Update([FromBody] ProductRequest request, Guid id)
     {
         var result = await _productService.UpdateAsync(id, request.Name, request.ShortName, request.Length,
-            request.Width, request.Height, request.Description, request.Materials, request.PathToImageSchema);
+            request.Width, request.Height, request.Description, request.Materials, request.PathToImageSchema,
+            request.TagId);
         if (result == null) return NotFound();
 
         return Ok();

@@ -33,6 +33,11 @@ public class ProductService
     {
         return await _productRepository.GetByColorAsync(colorId);
     }
+
+    public async Task<List<Product>?> GetByTagAsync(Guid tagId)
+    {
+        return await _productRepository.GetByTagAsync(tagId);
+    }
     
     public async Task<List<Product>?> GetByNameAsync(string name)
     {
@@ -40,10 +45,10 @@ public class ProductService
     }
 
     public async Task<Product?> UpdateAsync(Guid productId, string name, string shortName, ushort length,
-        ushort width, ushort height, string description, string materials, string pathToImageSchema)
+        ushort width, ushort height, string description, string materials, string pathToImageSchema, Guid? tagId)
     {
         return await _productRepository.UpdateAsync(productId, name, shortName, length, width, height, description,
-            materials, pathToImageSchema);
+            materials, pathToImageSchema, tagId);
     }
 
     public async Task<Product?> DeleteAsync(Guid id)
@@ -52,14 +57,14 @@ public class ProductService
     }
 
     public async Task<Product?> CreateAsync(Guid categoryId, string name, string shortName, ushort length,
-        ushort width, ushort height, string description, string materials, string pathToImageSchema)
+        ushort width, ushort height, string description, string materials, string pathToImageSchema, Guid? tagId)
     {
         var sectionExist = await _categoryRepository.ExistsAsync(categoryId);
 
         if (!sectionExist) return null;
         
         var product = Product.Create(Guid.NewGuid(), name, shortName, length, width, height, description, materials,
-            pathToImageSchema, categoryId);
+            pathToImageSchema, categoryId, tagId);
         await _productRepository.CreateAsync(product);
         return product;
     }

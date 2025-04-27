@@ -20,4 +20,5 @@ public class ProductDto
     
     public string Materials { get; set; } = string.Empty;
     public string PathToImageSchema { get; set; } = string.Empty;
+    public Guid? TagId { get; set; }
 }

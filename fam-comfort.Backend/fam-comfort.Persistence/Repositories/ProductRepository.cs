@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using fam_comfort.Application.Interfaces.Repositories;
 using fam_comfort.Core.Models;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,29 @@ public class ProductRepository : IProductRepository
     public async Task<List<Product>?> GetAllAsync(Guid categoryId)
     {
         return await _context.Products.Include(c => c.Colors).Where(p => p.CategoryId == categoryId).ToListAsync();
+    }
+
+    public async Task<List<Product>?> GetAsync(
+        Expression<Func<Product, bool>>? filter = null,
+        Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy = null,
+        string includeProperties = "")
+    {
+        IQueryable<Product> query = _context.Products;
+
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
+        query = includeProperties.Split([','], StringSplitOptions.RemoveEmptyEntries).Aggregate(query,
+            (current, includeProperty) => current.Include(includeProperty));
+
+        if (orderBy != null)
+        {
+            return await orderBy(query).ToListAsync();
+        }
+        
+        return await query.ToListAsync();
     }
 
     public async Task<Product> CreateAsync(Product product)
@@ -38,6 +62,15 @@ public class ProductRepository : IProductRepository
         return color?.Product;
     }
 
+    public async Task<List<Product>?> GetByTagAsync(Guid tagId)
+    {
+        var tag = await _context.Tags
+            .Include(t => t.Products)
+            .FirstOrDefaultAsync(t => t.Id == tagId);
+
+        return tag?.Products?.ToList();
+    }
+
     public async Task<List<Product>?> GetByNameAsync(string name)
     {
         return await _context.Products.Include(c => c.Colors).Where(c => c.Category.Name.ToLower().StartsWith(name.ToLower())).ToListAsync();
@@ -45,7 +78,7 @@ public class ProductRepository : IProductRepository
 
     public async Task<Product?> UpdateAsync(Guid productId, string name, string shortName, ushort length, ushort width,
         ushort height,
-        string description, string materials, string pathToImageSchema)
+        string description, string materials, string pathToImageSchema, Guid? tagId)
     {
         var product = await GetByIdAsync(productId);
         
@@ -59,6 +92,7 @@ public class ProductRepository : IProductRepository
         product.Description = UpdateIfNotEmpty(description, product.Description);
         product.Materials = UpdateIfNotEmpty(name, product.Name);
         product.PathToImageSchema = UpdateIfNotEmpty(name, product.Name);
+        product.TagId = tagId;
         
         await _context.SaveChangesAsync();
         return product;

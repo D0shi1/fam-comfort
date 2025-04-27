@@ -3,7 +3,7 @@ namespace fam_comfort.Core.Models;
 public class Product
 {
     private Product(Guid id, string name,  string shortName, ushort length, ushort width, ushort height,
-        string description, string materials, string pathToImageSchema, Guid categoryId)
+        string description, string materials, string pathToImageSchema, Guid categoryId, Guid? tagId)
     {
         Id = id;
         Name = name;
@@ -15,6 +15,7 @@ public class Product
         Materials = materials;
         PathToImageSchema = pathToImageSchema;
         CategoryId = categoryId;
+        TagId = tagId;
     }
 
     public Product()
@@ -30,13 +31,16 @@ public class Product
     public string Description { get; set; } = string.Empty;
     public string Materials { get; set; } = string.Empty;
     public string PathToImageSchema { get; set; } = string.Empty;
+    public Tag Tag { get; set; }
+    public Guid? TagId { get; set; }
     public List<Color> Colors { get; set; } = [];
     public Category Category { get; set; }
     public Guid CategoryId { get; set; }
 
     public static Product Create(Guid id, string name, string shortName, ushort length, ushort width, ushort height,
-        string description, string materials, string pathToImageSchema, Guid categoryId)
+        string description, string materials, string pathToImageSchema, Guid categoryId, Guid? tagId)
     {
-        return new Product(id, name, shortName, length, width, height, description, materials, pathToImageSchema,categoryId);
+        return new Product(id, name, shortName, length, width, height, description, materials, pathToImageSchema,
+            categoryId, tagId);
     }
 }
